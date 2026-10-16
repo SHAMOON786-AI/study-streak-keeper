@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Streak Keeper | MFC VIT Task 1</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Top Navigation Header -->
+    <header class="app-header">
+      <div class="header-left">
+        <div class="brand-logo">🔥</div>
+        <div>
+          <h1 class="brand-title">Study Streak Keeper</h1>
+          <p class="brand-subtitle">Track daily study sessions, build unstoppable momentum</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="btnExportCsv" class="btn btn-secondary">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Export CSV
+        </button>
+        <button id="btnOpenLogModal" class="btn btn-primary">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Log Session
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-content">
+      <!-- Streak & Summary Banner Cards -->
+      <section class="metrics-grid">
+        <div class="metric-card metric-current-streak">
+          <div class="metric-icon">🔥</div>
+          <div class="metric-info">
+            <span class="metric-label">Current Streak</span>
+            <div class="metric-value-wrap">
+              <span id="metricCurrentStreak" class="metric-value">0</span>
+              <span class="metric-unit">days</span>
+            </div>
+            <span id="streakStatusBadge" class="status-badge">Calculating...</span>
+          </div>
+        </div>
+
+        <div class="metric-card metric-longest-streak">
+          <div class="metric-icon">🏆</div>
+          <div class="metric-info">
+            <span class="metric-label">Longest Streak</span>
+            <div class="metric-value-wrap">
+              <span id="metricLongestStreak" class="metric-value">0</span>
+              <span class="metric-unit">days</span>
+            </div>
+            <span class="metric-subtext">All-time personal record</span>
+          </div>
+        </div>
+
+        <div class="metric-card metric-weekly-time">
+          <div class="metric-icon">⚡</div>
+          <div class="metric-info">
+            <span class="metric-label">This Week's Study Time</span>
+            <div class="metric-value-wrap">
+              <span id="metricWeeklyTime" class="metric-value">0h 0m</span>
+            </div>
+            <span id="metricWeekRange" class="metric-subtext">Mon - Sun</span>
+          </div>
+        </div>
+
+        <div class="metric-card metric-total-time">
+          <div class="metric-icon">⏳</div>
+          <div class="metric-info">
+            <span class="metric-label">Total Time Studied</span>
+            <div class="metric-value-wrap">
+              <span id="metricTotalTime" class="metric-value">0h 0m</span>
+            </div>
+            <span id="metricTotalSessions" class="metric-subtext">0 logged sessions</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Center Dashboard Grid: Chart + Weekly Per-Subject Breakdown -->
+      <div class="dashboard-split">
+        <!-- Interactive Chart Card -->
+        <section class="card chart-section">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">Study Time Over Time</h2>
+              <p class="card-subtitle">Daily minutes studied over the last 14 days</p>
+            </div>
+            <div class="chart-badges">
+              <span class="badge badge-accent">Daily Minutes</span>
+            </div>
+          </div>
+          <div class="chart-container">
+            <canvas id="studyChart" height="230"></canvas>
+          </div>
+        </section>
+
+        <!-- Current Week Subject Breakdown -->
+        <section class="card weekly-section">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">This Week by Subject</h2>
+              <p class="card-subtitle" id="weeklyRangeLabel">Current Week Breakdown</p>
+            </div>
+          </div>
+          <div id="weeklySubjectList" class="weekly-subject-list">
+            <div class="empty-state">No sessions logged for this week yet.</div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Quick Session Logger Form (In-page) -->
+      <section class="card log-form-card" id="logSection">
+        <div class="card-header">
+          <div>
+            <h2 class="card-title">⚡ Quick Log Study Session</h2>
+            <p class="card-subtitle">Record your session with subject, duration, and date</p>
+          </div>
+        </div>
+        <form id="sessionForm" class="log-form">
+          <div class="form-row">
+            <div class="form-group flex-2">
+              <label for="inputSubject">Subject *</label>
+              <input type="text" id="inputSubject" placeholder="e.g. Data Structures, Calculus, AI" required>
+              <div class="chips-container" id="subjectChips">
+                <span class="chip" data-subject="DSA">DSA</span>
+                <span class="chip" data-subject="Operating Systems">OS</span>
+                <span class="chip" data-subject="Web Development">Web Dev</span>
+                <span class="chip" data-subject="Database Systems">DBMS</span>
+                <span class="chip" data-subject="Calculus">Calculus</span>
+              </div>
+            </div>
+
+            <div class="form-group flex-1">
+              <label for="inputDuration">Duration (minutes) *</label>
+              <input type="number" id="inputDuration" min="1" placeholder="e.g. 45" required>
+              <div class="chips-container" id="durationChips">
+                <span class="chip" data-duration="25">25m</span>
+                <span class="chip" data-duration="45">45m</span>
+                <span class="chip" data-duration="60">60m</span>
+                <span class="chip" data-duration="90">90m</span>
+              </div>
+            </div>
+
+            <div class="form-group flex-1">
+              <label for="inputDate">Date *</label>
+              <input type="date" id="inputDate" required>
+              <div class="form-hint">Midnight boundary safe</div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group flex-3">
+              <label for="inputNotes">Notes / Topic (optional)</label>
+              <input type="text" id="inputNotes" placeholder="What did you work on or accomplish?">
+            </div>
+            <div class="form-group flex-1 form-submit-col">
+              <button type="submit" id="btnSubmitSession" class="btn btn-primary btn-block">
+                <span>Save Session</span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <!-- Past Sessions Management Section -->
+      <section class="card sessions-card">
+        <div class="card-header sessions-header">
+          <div>
+            <h2 class="card-title">Past Study Sessions</h2>
+            <p class="card-subtitle">View, edit, or delete logged sessions</p>
+          </div>
+          <div class="sessions-controls">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search by subject or notes...">
+            <select id="filterSubject" class="select-filter">
+              <option value="all">All Subjects</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="sessions-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Subject</th>
+                <th>Duration</th>
+                <th>Notes</th>
+                <th class="text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="sessionsTableBody">
+              <tr>
+                <td colspan="5" class="loading-cell">Loading sessions...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>Study Streak Keeper • Built for MFC VIT Technical Assessment • Persistent Storage & Edge-Case Verified</p>
+    </footer>
+  </div>
+
+  <!-- Edit Session Modal -->
+  <div id="editModal" class="modal-backdrop hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">Edit Study Session</h3>
+        <button id="btnCloseModal" class="modal-close-btn">&times;</button>
+      </div>
+      <form id="editForm" class="modal-form">
+        <input type="hidden" id="editSessionId">
+        
+        <div class="form-group">
+          <label for="editSubject">Subject *</label>
+          <input type="text" id="editSubject" required>
+        </div>
+
+        <div class="form-group">
+          <label for="editDuration">Duration (minutes) *</label>
+          <input type="number" id="editDuration" min="1" required>
+        </div>
+
+        <div class="form-group">
+          <label for="editDate">Date *</label>
+          <input type="date" id="editDate" required>
+        </div>
+
+        <div class="form-group">
+          <label for="editNotes">Notes (optional)</label>
+          <textarea id="editNotes" rows="3"></textarea>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" id="btnCancelEdit" class="btn btn-secondary">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

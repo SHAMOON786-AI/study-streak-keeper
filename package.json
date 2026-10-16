@@ -1,0 +1,25 @@
+{
+  "name": "study-streak-keeper",
+  "version": "1.0.0",
+  "description": "Daily study session tracker with streak calculation, analytics, and CSV export for MFC VIT Task 1",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node tests/streak.test.js"
+  },
+  "keywords": [
+    "study",
+    "streak",
+    "tracker",
+    "express",
+    "mfc-vit"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.3.0"
+  }
+}

@@ -136,11 +136,69 @@ function deleteSession(id) {
   return true;
 }
 
+const PROFILE_FILE = path.join(DATA_DIR, 'profile.json');
+
+const DEFAULT_PROFILE = {
+  weeklyGoalMinutes: 600, // 10 hours target
+  streakFreezesAvailable: 1,
+  freezeHistory: []
+};
+
+function getUserProfile() {
+  ensureStorageExists();
+  if (!fs.existsSync(PROFILE_FILE)) {
+    fs.writeFileSync(PROFILE_FILE, JSON.stringify(DEFAULT_PROFILE, null, 2), 'utf-8');
+    return { ...DEFAULT_PROFILE };
+  }
+  try {
+    const raw = fs.readFileSync(PROFILE_FILE, 'utf-8');
+    return { ...DEFAULT_PROFILE, ...JSON.parse(raw) };
+  } catch {
+    return { ...DEFAULT_PROFILE };
+  }
+}
+
+function updateUserProfile(updates) {
+  const current = getUserProfile();
+  const updated = {
+    ...current,
+    ...updates
+  };
+  fs.writeFileSync(PROFILE_FILE, JSON.stringify(updated, null, 2), 'utf-8');
+  return updated;
+}
+
+function activateStreakFreeze(freezeDate) {
+  const profile = getUserProfile();
+  if (profile.streakFreezesAvailable <= 0) {
+    return { success: false, error: 'No streak freezes currently available. Earn freezes through consistent study.' };
+  }
+  profile.streakFreezesAvailable -= 1;
+  profile.freezeHistory.push({
+    date: freezeDate,
+    activatedAt: new Date().toISOString()
+  });
+  updateUserProfile(profile);
+  return { success: true, profile };
+}
+
+function importAllSessions(newSessions) {
+  if (!Array.isArray(newSessions)) {
+    throw new Error('Import data must be a valid array of sessions.');
+  }
+  saveAllSessions(newSessions);
+  return newSessions.length;
+}
+
 module.exports = {
   getAllSessions,
   saveAllSessions,
   getSessionById,
   createSession,
   updateSession,
-  deleteSession
+  deleteSession,
+  getUserProfile,
+  updateUserProfile,
+  activateStreakFreeze,
+  importAllSessions
 };

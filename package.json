@@ -6,9 +6,10 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js",
-    "test": "node tests/streak.test.js && node tests/ml.test.js",
+    "test": "node tests/streak.test.js && node tests/ml.test.js && node tests/gamification.test.js",
     "test:streak": "node tests/streak.test.js",
     "test:ml": "node tests/ml.test.js",
+    "test:gamification": "node tests/gamification.test.js",
     "ml:pipeline": "python ml_pipeline/run_ml_pipeline.py"
   },
   "keywords": [

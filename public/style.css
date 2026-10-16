@@ -897,3 +897,308 @@ textarea:focus {
   transform: scale(1.05);
 }
 
+/* ==========================================================================
+   Weekly Goal & Streak Freeze Cards
+   ========================================================================== */
+.metric-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-link-action {
+  background: transparent;
+  border: none;
+  color: var(--accent-orange);
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.btn-link-action:hover {
+  color: #fb923c;
+}
+
+/* ==========================================================================
+   Live Pomodoro Focus Studio & Ambient Noise
+   ========================================================================== */
+.pomodoro-card {
+  background: linear-gradient(135deg, #131d2e 0%, #16243b 100%);
+  border: 1px solid var(--border-color);
+}
+
+.timer-modes {
+  display: flex;
+  gap: 0.5rem;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 0.25rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+}
+
+.timer-mode-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.timer-mode-btn.active {
+  background: var(--accent-orange);
+  color: #ffffff;
+}
+
+.pomodoro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (max-width: 800px) {
+  .pomodoro-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.timer-display-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(10, 15, 29, 0.5);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.timer-clock {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.25rem;
+  text-shadow: 0 0 20px rgba(255, 120, 40, 0.3);
+}
+
+.timer-controls {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ambient-sound-box {
+  margin-top: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem;
+}
+
+.ambient-chips {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.4rem;
+}
+
+.ambient-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  border-radius: 9999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.ambient-btn.active {
+  background: rgba(6, 182, 212, 0.2);
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+.volume-slider-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.vol-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+input[type="range"] {
+  accent-color: var(--accent-cyan);
+  cursor: pointer;
+  flex: 1;
+}
+
+/* ==========================================================================
+   GitHub-Style 90-Day Contribution Heatmap
+   ========================================================================== */
+.heatmap-card {
+  position: relative;
+}
+
+.heatmap-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.heatmap-legend {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.legend-cell {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+.level-0 { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.03); }
+.level-1 { background: #064e3b; border: 1px solid #065f46; }
+.level-2 { background: #047857; border: 1px solid #059669; }
+.level-3 { background: #10b981; border: 1px solid #34d399; }
+.level-4 { background: #34d399; border: 1px solid #6ee7b7; box-shadow: 0 0 8px rgba(52, 211, 153, 0.5); }
+
+.heatmap-scroll-wrap {
+  width: 100%;
+  overflow-x: auto;
+  padding: 0.5rem 0;
+}
+
+.heatmap-grid {
+  display: grid;
+  grid-template-rows: repeat(7, 13px);
+  grid-auto-flow: column;
+  grid-auto-columns: 13px;
+  gap: 4px;
+  width: max-content;
+}
+
+.heatmap-cell {
+  width: 13px;
+  height: 13px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.heatmap-cell:hover {
+  transform: scale(1.3);
+  z-index: 5;
+}
+
+.heatmap-tooltip {
+  position: absolute;
+  background: #1e293b;
+  color: #ffffff;
+  border: 1px solid var(--border-color);
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  pointer-events: none;
+  z-index: 100;
+  box-shadow: var(--shadow-card);
+  white-space: nowrap;
+}
+
+.heatmap-tooltip.hidden {
+  display: none;
+}
+
+/* ==========================================================================
+   Gamification & Badges Showcase
+   ========================================================================== */
+.badges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.badge-item-card {
+  background: rgba(10, 15, 29, 0.5);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  transition: var(--transition);
+  position: relative;
+}
+
+.badge-item-card.locked {
+  opacity: 0.55;
+  filter: grayscale(0.8);
+}
+
+.badge-item-card.unlocked {
+  border-color: rgba(245, 158, 11, 0.4);
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(10, 15, 29, 0.7));
+}
+
+.badge-icon-box {
+  font-size: 2rem;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.04);
+  flex-shrink: 0;
+}
+
+.badge-content-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.badge-item-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.badge-item-desc {
+  font-size: 0.74rem;
+  color: var(--text-secondary);
+  line-height: 1.3;
+}
+
+.badge-status-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  margin-top: 0.25rem;
+  display: inline-block;
+}
+
+.badge-status-tag.unlocked {
+  color: #f59e0b;
+}
+
+.badge-status-tag.locked {
+  color: var(--text-muted);
+}
+

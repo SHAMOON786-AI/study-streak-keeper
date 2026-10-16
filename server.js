@@ -10,6 +10,7 @@ const {
   toDateKey
 } = require('./src/streak');
 const ml = require('./src/ml');
+const gamification = require('./src/gamification');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -189,6 +190,8 @@ app.get('/api/stats', (req, res) => {
     }
 
     const mlInsights = ml.generateMlInsights(sessions, streaks.currentStreak);
+    const achievements = gamification.evaluateAchievements({ ...streaks, totalMinutes }, sessions);
+    const profile = storage.getUserProfile();
 
     res.json({
       success: true,
@@ -200,9 +203,131 @@ app.get('/api/stats', (req, res) => {
         weekly,
         dailyTrend,
         subjectDistribution,
-        mlInsights
+        mlInsights,
+        achievements,
+        profile
       }
     });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+/**
+ * GET /api/heatmap
+ * 91-day GitHub/LeetCode-style activity matrix with intensity levels (0 to 4).
+ */
+app.get('/api/heatmap', (req, res) => {
+  try {
+    const sessions = storage.getAllSessions();
+    const heatmap = gamification.generateActivityHeatmap(sessions);
+    res.json({ success: true, count: heatmap.length, data: heatmap });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+/**
+ * GET /api/user/profile
+ * Get user study goals, streak freezes, and earned achievement badges.
+ */
+app.get('/api/user/profile', (req, res) => {
+  try {
+    const sessions = storage.getAllSessions();
+    const streaks = calculateStreaks(sessions);
+    const totalMinutes = sessions.reduce((acc, s) => acc + Number(s.duration || 0), 0);
+    const achievements = gamification.evaluateAchievements({ ...streaks, totalMinutes }, sessions);
+    const profile = storage.getUserProfile();
+
+    res.json({
+      success: true,
+      data: {
+        profile,
+        achievements
+      }
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+/**
+ * PUT /api/user/profile
+ * Update user study goals (e.g. weeklyTargetMinutes).
+ */
+app.put('/api/user/profile', (req, res) => {
+  try {
+    const { weeklyGoalMinutes } = req.body;
+    const updates = {};
+    if (weeklyGoalMinutes !== undefined) {
+      const mins = Number(weeklyGoalMinutes);
+      if (isNaN(mins) || mins <= 0) {
+        return res.status(400).json({ success: false, error: 'Weekly goal must be a positive number of minutes.' });
+      }
+      updates.weeklyGoalMinutes = mins;
+    }
+    const updated = storage.updateUserProfile(updates);
+    res.json({ success: true, message: 'Profile updated.', data: updated });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+/**
+ * POST /api/user/freeze
+ * Activate an earned streak freeze to shield against a missed day.
+ */
+app.post('/api/user/freeze', (req, res) => {
+  try {
+    const freezeDate = req.body.date || toDateKey(new Date());
+    const result = storage.activateStreakFreeze(freezeDate);
+    if (!result.success) {
+      return res.status(400).json({ success: false, error: result.error });
+    }
+    res.json({ success: true, message: `Streak freeze activated for ${freezeDate}. Streak protected!`, data: result.profile });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+/**
+ * GET /api/export/json
+ * Full database backup export in JSON format.
+ */
+app.get('/api/export/json', (req, res) => {
+  try {
+    const sessions = storage.getAllSessions();
+    const profile = storage.getUserProfile();
+    const backup = {
+      version: '1.0.0',
+      exportedAt: new Date().toISOString(),
+      profile,
+      sessions
+    };
+    const filename = `study-streak-backup-${new Date().toISOString().slice(0, 10)}.json`;
+    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+    res.send(JSON.stringify(backup, null, 2));
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+/**
+ * POST /api/import/json
+ * Restore database from a JSON backup.
+ */
+app.post('/api/import/json', (req, res) => {
+  try {
+    const { sessions, profile } = req.body;
+    if (!Array.isArray(sessions)) {
+      return res.status(400).json({ success: false, error: 'Invalid backup file: sessions array is required.' });
+    }
+    storage.importAllSessions(sessions);
+    if (profile && typeof profile === 'object') {
+      storage.updateUserProfile(profile);
+    }
+    res.json({ success: true, message: `Successfully restored ${sessions.length} sessions from backup.` });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }

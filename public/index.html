@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Study Streak Keeper | MFC VIT Task 1</title>
+  <title>Study Streak Keeper | MFC VIT Task 1 (ML / JR)</title>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="app-layout">
@@ -17,15 +17,24 @@
         <div class="brand-logo">🔥</div>
         <div>
           <h1 class="brand-title">Study Streak Keeper</h1>
-          <p class="brand-subtitle">Track daily study sessions, build unstoppable momentum</p>
+          <p class="brand-subtitle">AI-Powered Study Session Tracker & Habit Intelligence</p>
         </div>
       </div>
       <div class="header-actions">
-        <button id="btnExportCsv" class="btn btn-secondary">
+        <button id="btnExportCsv" class="btn btn-secondary btn-sm" title="Download CSV spreadsheet">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Export CSV
         </button>
-        <button id="btnOpenLogModal" class="btn btn-primary">
+        <button id="btnExportJson" class="btn btn-secondary btn-sm" title="Backup full database to JSON">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+          Backup JSON
+        </button>
+        <button id="btnRestoreJson" class="btn btn-secondary btn-sm" title="Restore database from JSON file">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          Restore
+        </button>
+        <input type="file" id="backupFileInput" accept=".json" style="display:none;">
+        <button id="btnOpenLogModal" class="btn btn-primary btn-sm">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           Log Session
         </button>
@@ -36,6 +45,7 @@
     <main class="main-content">
       <!-- Streak & Summary Banner Cards -->
       <section class="metrics-grid">
+        <!-- Card 1: Current Streak -->
         <div class="metric-card metric-current-streak">
           <div class="metric-icon">🔥</div>
           <div class="metric-info">
@@ -48,6 +58,7 @@
           </div>
         </div>
 
+        <!-- Card 2: Longest Streak -->
         <div class="metric-card metric-longest-streak">
           <div class="metric-icon">🏆</div>
           <div class="metric-info">
@@ -60,26 +71,93 @@
           </div>
         </div>
 
-        <div class="metric-card metric-weekly-time">
-          <div class="metric-icon">⚡</div>
+        <!-- Card 3: Weekly Goal & Pace Meter -->
+        <div class="metric-card metric-weekly-goal">
+          <div class="metric-icon">🎯</div>
           <div class="metric-info">
-            <span class="metric-label">This Week's Study Time</span>
-            <div class="metric-value-wrap">
-              <span id="metricWeeklyTime" class="metric-value">0h 0m</span>
+            <div class="metric-label-row">
+              <span class="metric-label">Weekly Goal</span>
+              <button id="btnEditGoal" class="btn-link-action" title="Edit weekly target">Edit</button>
             </div>
-            <span id="metricWeekRange" class="metric-subtext">Mon - Sun</span>
+            <div class="metric-value-wrap">
+              <span id="metricWeeklyProgress" class="metric-value">0h</span>
+              <span class="metric-unit" id="metricWeeklyGoalTarget">/ 10h</span>
+            </div>
+            <div class="progress-bar-bg" style="margin-top: 0.35rem; width: 100%;">
+              <div id="metricGoalBar" class="progress-bar-fill" style="width: 0%;"></div>
+            </div>
+            <span id="metricPaceBadge" class="metric-subtext" style="color: var(--accent-cyan);">Pace: On Track</span>
           </div>
         </div>
 
-        <div class="metric-card metric-total-time">
-          <div class="metric-icon">⏳</div>
+        <!-- Card 4: Streak Shield / Freeze -->
+        <div class="metric-card metric-streak-freeze">
+          <div class="metric-icon">🛡️</div>
           <div class="metric-info">
-            <span class="metric-label">Total Time Studied</span>
+            <span class="metric-label">Streak Shield</span>
             <div class="metric-value-wrap">
-              <span id="metricTotalTime" class="metric-value">0h 0m</span>
+              <span id="metricShieldCount" class="metric-value">1</span>
+              <span class="metric-unit">ready</span>
             </div>
-            <span id="metricTotalSessions" class="metric-subtext">0 logged sessions</span>
+            <button id="btnActivateShield" class="btn btn-secondary btn-sm" style="margin-top: 0.4rem; padding: 0.2rem 0.6rem; font-size: 0.72rem;">
+              Activate Freeze
+            </button>
           </div>
+        </div>
+      </section>
+
+      <!-- Live Pomodoro Focus Studio & Ambient Audio Engine -->
+      <section class="card pomodoro-card">
+        <div class="card-header">
+          <div>
+            <div class="badge-title-wrap">
+              <span class="badge badge-accent">Live Focus Studio</span>
+              <h2 class="card-title">Pomodoro Timer & Focus Sounds</h2>
+            </div>
+            <p class="card-subtitle">Study with native Web Audio background ambience and auto-log completed sessions</p>
+          </div>
+          <!-- Mode Tabs -->
+          <div class="timer-modes">
+            <button class="timer-mode-btn active" data-time="1500" data-label="Pomodoro">25m Focus</button>
+            <button class="timer-mode-btn" data-time="3000" data-label="Deep Work">50m Deep</button>
+            <button class="timer-mode-btn" data-time="300" data-label="Short Break">5m Break</button>
+          </div>
+        </div>
+
+        <div class="pomodoro-grid">
+          <!-- Big Timer Display -->
+          <div class="timer-display-col">
+            <div class="timer-clock" id="timerClock">25:00</div>
+            <div class="timer-controls">
+              <button id="btnTimerStart" class="btn btn-primary">Start Focus</button>
+              <button id="btnTimerPause" class="btn btn-secondary hidden">Pause</button>
+              <button id="btnTimerReset" class="btn btn-secondary">Reset</button>
+              <button id="btnTimerLog" class="btn btn-secondary" title="Log current elapsed time directly">Log Now</button>
+            </div>
+          </div>
+
+          <!-- Subject Tag & Ambient Sound Synthesizer -->
+          <div class="timer-settings-col">
+            <div class="form-group">
+              <label for="timerSubject">Focusing on Subject:</label>
+              <input type="text" id="timerSubject" placeholder="e.g. Data Structures, Operating Systems" value="Data Structures & Algorithms">
+            </div>
+
+            <div class="ambient-sound-box">
+              <label>🎧 Focus Ambient Audio (Synthesized In-Browser):</label>
+              <div class="ambient-chips">
+                <button type="button" class="ambient-btn active" data-sound="none">Off</button>
+                <button type="button" class="ambient-btn" data-sound="rain">🌧️ Rain</button>
+                <button type="button" class="ambient-btn" data-sound="brown">📻 Brown Noise</button>
+                <button type="button" class="ambient-btn" data-sound="binaural">🧠 Alpha Wave</button>
+              </div>
+              <div class="volume-slider-row">
+                <span class="vol-label">Volume:</span>
+                <input type="range" id="ambientVolume" min="0" max="1" step="0.05" value="0.35">
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- AI / ML Predictive Intelligence Panel -->
@@ -178,10 +256,10 @@
           <div class="card-header">
             <div>
               <h2 class="card-title">Study Time Over Time</h2>
-              <p class="card-subtitle">Daily minutes studied over the last 14 days</p>
+              <p class="card-subtitle">Recorded daily minutes & AI forecasted trajectory</p>
             </div>
             <div class="chart-badges">
-              <span class="badge badge-accent">Daily Minutes</span>
+              <span class="badge badge-accent">Daily Trend & Forecast</span>
             </div>
           </div>
           <div class="chart-container">
@@ -203,7 +281,51 @@
         </section>
       </div>
 
-      <!-- Quick Session Logger Form (In-page) -->
+      <!-- GitHub-Style 90-Day Contribution Heatmap Grid -->
+      <section class="card heatmap-card">
+        <div class="card-header heatmap-header">
+          <div>
+            <h2 class="card-title">90-Day Study Activity Matrix</h2>
+            <p class="card-subtitle">Consistency calendar visualizing study frequency and duration</p>
+          </div>
+          <div class="heatmap-legend">
+            <span>Less</span>
+            <div class="legend-cell level-0"></div>
+            <div class="legend-cell level-1"></div>
+            <div class="legend-cell level-2"></div>
+            <div class="legend-cell level-3"></div>
+            <div class="legend-cell level-4"></div>
+            <span>More</span>
+          </div>
+        </div>
+        <div class="heatmap-scroll-wrap">
+          <div id="heatmapGrid" class="heatmap-grid">
+            <!-- Dynamically populated 91 days grid -->
+          </div>
+        </div>
+        <div id="heatmapTooltip" class="heatmap-tooltip hidden"></div>
+      </section>
+
+      <!-- Gamification: Milestones & Achievement Badges Showcase -->
+      <section class="card achievements-card">
+        <div class="card-header">
+          <div>
+            <div class="badge-title-wrap">
+              <span class="badge badge-accent">Gamification</span>
+              <h2 class="card-title">Milestones & Achievements</h2>
+            </div>
+            <p class="card-subtitle" id="achievementsSubtext">Unlock badges by building momentum and consistent study habits</p>
+          </div>
+          <div class="achievement-progress-wrap">
+            <span id="achievementUnlockedCount" class="badge badge-ml">0 / 8 Unlocked</span>
+          </div>
+        </div>
+        <div id="badgesGrid" class="badges-grid">
+          <!-- Populated dynamically -->
+        </div>
+      </section>
+
+      <!-- Quick Session Logger Form -->
       <section class="card log-form-card" id="logSection">
         <div class="card-header">
           <div>
@@ -217,11 +339,11 @@
               <label for="inputSubject">Subject *</label>
               <input type="text" id="inputSubject" placeholder="e.g. Data Structures, Calculus, AI" required>
               <div class="chips-container" id="subjectChips">
-                <span class="chip" data-subject="DSA">DSA</span>
+                <span class="chip" data-subject="Data Structures & Algorithms">DSA</span>
                 <span class="chip" data-subject="Operating Systems">OS</span>
                 <span class="chip" data-subject="Web Development">Web Dev</span>
                 <span class="chip" data-subject="Database Systems">DBMS</span>
-                <span class="chip" data-subject="Calculus">Calculus</span>
+                <span class="chip" data-subject="Calculus & Mathematics">Calculus</span>
               </div>
             </div>
 
@@ -243,6 +365,7 @@
             </div>
           </div>
 
+          <div class="form-row">
             <div class="form-group flex-3">
               <label for="inputNotes">Notes / Topic (optional)</label>
               <input type="text" id="inputNotes" placeholder="What did you work on or accomplish? (e.g. inverted binary tree, SQL joins, page replacement)">
@@ -299,7 +422,7 @@
 
     <!-- Footer -->
     <footer class="app-footer">
-      <p>Study Streak Keeper • Built for MFC VIT Technical Assessment • Persistent Storage & Edge-Case Verified</p>
+      <p>Study Streak Keeper • Built for MFC VIT Technical Assessment (ML / JR Track) • Persistent Storage, ML Suite & Gamification Engine</p>
     </footer>
   </div>
 
@@ -341,11 +464,33 @@
     </div>
   </div>
 
+  <!-- Edit Weekly Goal Modal -->
+  <div id="goalModal" class="modal-backdrop hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">Set Weekly Study Goal</h3>
+        <button id="btnCloseGoalModal" class="modal-close-btn">&times;</button>
+      </div>
+      <form id="goalForm" class="modal-form">
+        <div class="form-group">
+          <label for="inputWeeklyGoalHours">Target Hours per Week *</label>
+          <input type="number" id="inputWeeklyGoalHours" min="1" max="100" step="0.5" value="10" required>
+          <div class="form-hint">E.g., 10 hours/week = ~1.5 hours daily</div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" id="btnCancelGoal" class="btn btn-secondary">Cancel</button>
+          <button type="submit" class="btn btn-primary">Update Goal</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <!-- Toast Notification Container -->
   <div id="toastContainer" class="toast-container"></div>
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="audio.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

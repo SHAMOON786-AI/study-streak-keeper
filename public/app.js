@@ -88,6 +88,13 @@ async function loadDashboard() {
       if (statsRes.data.mlInsights) {
         renderMlInsights(statsRes.data.mlInsights);
       }
+      if (statsRes.data.profile) {
+        renderGoalProgress(statsRes.data.profile, statsRes.data.weekly?.totalWeeklyMinutes || 0);
+      }
+      if (statsRes.data.achievements) {
+        renderBadges(statsRes.data.achievements);
+      }
+      renderHeatmap();
     }
 
     if (sessionsRes.success) {
@@ -682,8 +689,394 @@ if (inputNotes) {
   });
 }
 
+// ==========================================================================
+// 1. Weekly Study Goal & Streak Freeze System
+// ==========================================================================
+let currentProfile = { weeklyGoalMinutes: 600, streakFreezesAvailable: 1 };
+
+function renderGoalProgress(profile, weeklyMinutes) {
+  currentProfile = profile;
+  const targetMins = profile.weeklyGoalMinutes || 600;
+  const targetHours = (targetMins / 60).toFixed(1);
+  const currentHours = (weeklyMinutes / 60).toFixed(1);
+  const pct = Math.min(100, Math.round((weeklyMinutes / targetMins) * 100));
+
+  const progressEl = document.getElementById('metricWeeklyProgress');
+  const targetEl = document.getElementById('metricWeeklyGoalTarget');
+  const barEl = document.getElementById('metricGoalBar');
+  const paceEl = document.getElementById('metricPaceBadge');
+  const shieldEl = document.getElementById('metricShieldCount');
+
+  if (progressEl) progressEl.textContent = `${currentHours}h`;
+  if (targetEl) targetEl.textContent = `/ ${targetHours}h`;
+  if (barEl) barEl.style.width = `${pct}%`;
+  if (shieldEl) shieldEl.textContent = profile.streakFreezesAvailable;
+
+  if (paceEl) {
+    if (pct >= 100) {
+      paceEl.textContent = '🎉 Goal Met!';
+      paceEl.style.color = '#34d399';
+    } else if (pct >= 50) {
+      paceEl.textContent = `Pace: On Track (${pct}%)`;
+      paceEl.style.color = '#22d3ee';
+    } else {
+      paceEl.textContent = `Pace: In Progress (${pct}%)`;
+      paceEl.style.color = '#f59e0b';
+    }
+  }
+}
+
+// Goal Edit Modal
+const goalModal = document.getElementById('goalModal');
+const goalForm = document.getElementById('goalForm');
+const btnEditGoal = document.getElementById('btnEditGoal');
+const inputWeeklyGoalHours = document.getElementById('inputWeeklyGoalHours');
+const btnCloseGoalModal = document.getElementById('btnCloseGoalModal');
+const btnCancelGoal = document.getElementById('btnCancelGoal');
+
+if (btnEditGoal) {
+  btnEditGoal.addEventListener('click', () => {
+    if (inputWeeklyGoalHours) {
+      inputWeeklyGoalHours.value = (currentProfile.weeklyGoalMinutes / 60).toFixed(1);
+    }
+    goalModal.classList.remove('hidden');
+  });
+}
+
+function closeGoalModal() {
+  if (goalModal) goalModal.classList.add('hidden');
+}
+
+if (btnCloseGoalModal) btnCloseGoalModal.addEventListener('click', closeGoalModal);
+if (btnCancelGoal) btnCancelGoal.addEventListener('click', closeGoalModal);
+if (goalModal) {
+  goalModal.addEventListener('click', (e) => {
+    if (e.target === goalModal) closeGoalModal();
+  });
+}
+
+if (goalForm) {
+  goalForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const hours = Number(inputWeeklyGoalHours.value);
+    if (isNaN(hours) || hours <= 0) return;
+
+    try {
+      const res = await fetch('/api/user/profile', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ weeklyGoalMinutes: Math.round(hours * 60) })
+      });
+      const data = await res.json();
+      if (data.success) {
+        showToast('Weekly study goal updated!');
+        closeGoalModal();
+        await loadDashboard();
+      }
+    } catch {
+      showToast('Error updating goal.', 'error');
+    }
+  });
+}
+
+// Streak Freeze Trigger
+const btnActivateShield = document.getElementById('btnActivateShield');
+if (btnActivateShield) {
+  btnActivateShield.addEventListener('click', async () => {
+    if (currentProfile.streakFreezesAvailable <= 0) {
+      showToast('No streak shields available right now.', 'error');
+      return;
+    }
+    if (!confirm('Activate your streak shield for today? This protects your streak from breaking.')) return;
+
+    try {
+      const res = await fetch('/api/user/freeze', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ date: getTodayString() })
+      });
+      const data = await res.json();
+      if (data.success) {
+        showToast('🛡️ Streak shield activated! Your streak is protected.');
+        await loadDashboard();
+      } else {
+        showToast(data.error || 'Failed to activate shield.', 'error');
+      }
+    } catch {
+      showToast('Error activating shield.', 'error');
+    }
+  });
+}
+
+// ==========================================================================
+// 2. 90-Day Contribution Heatmap Grid
+// ==========================================================================
+async function renderHeatmap() {
+  const gridEl = document.getElementById('heatmapGrid');
+  const tooltipEl = document.getElementById('heatmapTooltip');
+  if (!gridEl) return;
+
+  try {
+    const res = await fetch('/api/heatmap');
+    const data = await res.json();
+    if (!data.success || !Array.isArray(data.data)) return;
+
+    gridEl.innerHTML = '';
+    data.data.forEach((day) => {
+      const cell = document.createElement('div');
+      cell.className = `heatmap-cell level-${day.level}`;
+      cell.dataset.date = day.date;
+      cell.dataset.minutes = day.minutes;
+      cell.dataset.sessions = day.sessionsCount;
+      cell.dataset.subjects = day.subjects.join(', ');
+
+      cell.addEventListener('mouseenter', (e) => {
+        if (!tooltipEl) return;
+        const rect = cell.getBoundingClientRect();
+        const parentRect = gridEl.parentElement.getBoundingClientRect();
+        const top = rect.top - parentRect.top - 38;
+        const left = rect.left - parentRect.left - 20;
+
+        const info = day.minutes > 0
+          ? `${day.date}: ${day.minutes} mins (${day.subjects.join(', ') || 'General'})`
+          : `${day.date}: No study sessions`;
+
+        tooltipEl.textContent = info;
+        tooltipEl.style.top = `${top}px`;
+        tooltipEl.style.left = `${left}px`;
+        tooltipEl.classList.remove('hidden');
+      });
+
+      cell.addEventListener('mouseleave', () => {
+        if (tooltipEl) tooltipEl.classList.add('hidden');
+      });
+
+      gridEl.appendChild(cell);
+    });
+  } catch (err) {
+    console.error('Heatmap render error:', err);
+  }
+}
+
+// ==========================================================================
+// 3. Gamification Badges Showcase
+// ==========================================================================
+function renderBadges(achievements) {
+  const gridEl = document.getElementById('badgesGrid');
+  const countEl = document.getElementById('achievementUnlockedCount');
+  const subtextEl = document.getElementById('achievementsSubtext');
+  if (!gridEl || !achievements) return;
+
+  if (countEl) {
+    countEl.textContent = `${achievements.unlockedCount} / ${achievements.totalBadges} Unlocked (${achievements.completionPercentage}%)`;
+  }
+  if (subtextEl) {
+    subtextEl.textContent = `${achievements.completionPercentage}% of study milestones achieved. Consistent study unlocks more badges!`;
+  }
+
+  gridEl.innerHTML = achievements.badges
+    .map((b) => {
+      return `
+        <div class="badge-item-card ${b.unlocked ? 'unlocked' : 'locked'}">
+          <div class="badge-icon-box">${b.icon}</div>
+          <div class="badge-content-box">
+            <span class="badge-item-title">${escapeHtml(b.title)}</span>
+            <span class="badge-item-desc">${escapeHtml(b.description)}</span>
+            <span class="badge-status-tag ${b.unlocked ? 'unlocked' : 'locked'}">
+              ${b.unlocked ? '✨ Unlocked' : '🔒 Locked'}
+            </span>
+          </div>
+        </div>
+      `;
+    })
+    .join('');
+}
+
+// ==========================================================================
+// 4. Pomodoro Focus Studio & Ambient Noise Generator
+// ==========================================================================
+let timerTotalSeconds = 1500; // 25m default
+let timerSecondsRemaining = 1500;
+let timerInterval = null;
+let timerIsRunning = false;
+let currentTimerMode = 'Pomodoro';
+
+const timerClockEl = document.getElementById('timerClock');
+const btnTimerStart = document.getElementById('btnTimerStart');
+const btnTimerPause = document.getElementById('btnTimerPause');
+const btnTimerReset = document.getElementById('btnTimerReset');
+const btnTimerLog = document.getElementById('btnTimerLog');
+const timerSubjectInput = document.getElementById('timerSubject');
+
+function updateTimerDisplay() {
+  if (!timerClockEl) return;
+  const mins = Math.floor(timerSecondsRemaining / 60);
+  const secs = timerSecondsRemaining % 60;
+  timerClockEl.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+}
+
+function startTimer() {
+  if (timerIsRunning) return;
+  timerIsRunning = true;
+  btnTimerStart.classList.add('hidden');
+  btnTimerPause.classList.remove('hidden');
+
+  timerInterval = setInterval(() => {
+    if (timerSecondsRemaining > 0) {
+      timerSecondsRemaining--;
+      updateTimerDisplay();
+    } else {
+      pauseTimer();
+      showToast(`⏰ ${currentTimerMode} session completed! Great focus!`);
+      // Auto prompt logging
+      logPomodoroSession();
+    }
+  }, 1000);
+}
+
+function pauseTimer() {
+  timerIsRunning = false;
+  clearInterval(timerInterval);
+  btnTimerStart.classList.remove('hidden');
+  btnTimerPause.classList.add('hidden');
+}
+
+function resetTimer() {
+  pauseTimer();
+  timerSecondsRemaining = timerTotalSeconds;
+  updateTimerDisplay();
+}
+
+async function logPomodoroSession() {
+  const elapsedMinutes = Math.max(1, Math.round((timerTotalSeconds - timerSecondsRemaining) / 60));
+  const subject = (timerSubjectInput ? timerSubjectInput.value : '').trim() || 'General Focus';
+
+  try {
+    const res = await fetch('/api/sessions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        subject,
+        duration: elapsedMinutes,
+        date: getTodayString(),
+        notes: `Completed ${currentTimerMode} focus block (${elapsedMinutes} mins)`
+      })
+    });
+    const data = await res.json();
+    if (data.success) {
+      showToast(`🔥 Logged ${elapsedMinutes}m focus session for ${subject}!`);
+      resetTimer();
+      await loadDashboard();
+    }
+  } catch {
+    showToast('Failed to auto-log focus session.', 'error');
+  }
+}
+
+// Mode Buttons
+document.querySelectorAll('.timer-mode-btn').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.timer-mode-btn').forEach((b) => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    timerTotalSeconds = Number(btn.dataset.time);
+    currentTimerMode = btn.dataset.label;
+    resetTimer();
+  });
+});
+
+if (btnTimerStart) btnTimerStart.addEventListener('click', startTimer);
+if (btnTimerPause) btnTimerPause.addEventListener('click', pauseTimer);
+if (btnTimerReset) btnTimerReset.addEventListener('click', resetTimer);
+if (btnTimerLog) {
+  btnTimerLog.addEventListener('click', () => {
+    const elapsed = timerTotalSeconds - timerSecondsRemaining;
+    if (elapsed < 60) {
+      showToast('Study for at least 1 minute before logging.', 'error');
+      return;
+    }
+    logPomodoroSession();
+  });
+}
+
+// Ambient Audio Synthesizer Controls
+document.querySelectorAll('.ambient-btn').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.ambient-btn').forEach((b) => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const sound = btn.dataset.sound;
+    if (!window.ambientEngine) return;
+
+    if (sound === 'rain') window.ambientEngine.playRain();
+    else if (sound === 'brown') window.ambientEngine.playBrownNoise();
+    else if (sound === 'binaural') window.ambientEngine.playBinauralAlpha();
+    else window.ambientEngine.stop();
+  });
+});
+
+const volumeSlider = document.getElementById('ambientVolume');
+if (volumeSlider) {
+  volumeSlider.addEventListener('input', (e) => {
+    if (window.ambientEngine) window.ambientEngine.setVolume(e.target.value);
+  });
+}
+
+// ==========================================================================
+// 5. JSON Database Backup & Restore Handlers
+// ==========================================================================
+const btnExportJson = document.getElementById('btnExportJson');
+const btnRestoreJson = document.getElementById('btnRestoreJson');
+const backupFileInput = document.getElementById('backupFileInput');
+
+if (btnExportJson) {
+  btnExportJson.addEventListener('click', () => {
+    window.location.href = '/api/export/json';
+    showToast('Downloading full database backup (JSON)...');
+  });
+}
+
+if (btnRestoreJson && backupFileInput) {
+  btnRestoreJson.addEventListener('click', () => {
+    backupFileInput.click();
+  });
+
+  backupFileInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = async (event) => {
+      try {
+        const payload = JSON.parse(event.target.result);
+        if (!payload.sessions) {
+          throw new Error('Invalid backup file structure: missing sessions array.');
+        }
+
+        const res = await fetch('/api/import/json', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast(`✓ Database restored! ${data.message}`);
+          await loadDashboard();
+        } else {
+          showToast(data.error || 'Restore failed.', 'error');
+        }
+      } catch (err) {
+        showToast('Error reading backup file: ' + err.message, 'error');
+      }
+    };
+    reader.readAsText(file);
+    backupFileInput.value = '';
+  });
+}
+
 // Initialization
 document.addEventListener('DOMContentLoaded', () => {
   inputDate.value = getTodayString();
+  updateTimerDisplay();
   loadDashboard();
 });

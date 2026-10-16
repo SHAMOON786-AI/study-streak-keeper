@@ -80,6 +80,94 @@
             </div>
             <span id="metricTotalSessions" class="metric-subtext">0 logged sessions</span>
           </div>
+      </section>
+
+      <!-- AI / ML Predictive Intelligence Panel -->
+      <section class="card ml-intelligence-card">
+        <div class="card-header ml-panel-header">
+          <div>
+            <div class="badge-title-wrap">
+              <span class="badge badge-ml">AI / ML Engine</span>
+              <h2 class="card-title">Study Intelligence & Predictive Analytics</h2>
+            </div>
+            <p class="card-subtitle">Real-time machine learning inference: streak churn risk, time-series forecasting, spaced repetition, and persona clustering</p>
+          </div>
+        </div>
+
+        <div class="ml-grid">
+          <!-- 1. Churn Risk Predictor -->
+          <div class="ml-feature-card">
+            <div class="ml-card-header">
+              <span class="ml-icon">🛡️</span>
+              <div>
+                <h3 class="ml-title">Streak Churn Risk</h3>
+                <p class="ml-subtitle">Logistic Regression Model</p>
+              </div>
+            </div>
+            <div class="ml-churn-visual">
+              <div class="churn-number-row">
+                <span id="mlChurnPercentage" class="ml-stat-large">--%</span>
+                <span id="mlChurnRiskBadge" class="status-badge">Calculating...</span>
+              </div>
+              <div class="progress-bar-bg" style="margin-top:0.4rem;">
+                <div id="mlChurnProgress" class="progress-bar-fill" style="width: 0%"></div>
+              </div>
+            </div>
+            <p id="mlChurnAdvice" class="ml-advice-text">Evaluating habit metrics...</p>
+          </div>
+
+          <!-- 2. Time-Series Study Forecaster -->
+          <div class="ml-feature-card">
+            <div class="ml-card-header">
+              <span class="ml-icon">🔮</span>
+              <div>
+                <h3 class="ml-title">Tomorrow's Forecast</h3>
+                <p class="ml-subtitle">Holt-Winters & OLS Regression</p>
+              </div>
+            </div>
+            <div class="ml-forecast-body">
+              <div class="forecast-number-row">
+                <span id="mlForecastTomorrow" class="ml-stat-large">-- min</span>
+                <span id="mlTrendDirection" class="status-badge">Stable</span>
+              </div>
+              <p id="mlForecastConfidence" class="ml-confidence-range">Expected range: -- to -- min</p>
+              <div class="forecast-mini-steps" id="mlForecastSteps"></div>
+            </div>
+          </div>
+
+          <!-- 3. Smart Subject Recommender -->
+          <div class="ml-feature-card">
+            <div class="ml-card-header">
+              <span class="ml-icon">💡</span>
+              <div>
+                <h3 class="ml-title">Recommended Next</h3>
+                <p class="ml-subtitle">Spaced Repetition & Load Balancer</p>
+              </div>
+            </div>
+            <div class="ml-rec-body">
+              <div class="rec-subject-badge" id="mlRecSubject">Loading...</div>
+              <p id="mlRecReason" class="ml-advice-text">Calculating decay scores...</p>
+              <button type="button" id="btnApplyRecommendation" class="btn btn-secondary btn-sm" style="margin-top: 0.6rem;">
+                ⚡ Apply to Log Form
+              </button>
+            </div>
+          </div>
+
+          <!-- 4. Study Persona Archetype -->
+          <div class="ml-feature-card">
+            <div class="ml-card-header">
+              <span class="ml-icon">🧬</span>
+              <div>
+                <h3 class="ml-title">Study Habit Persona</h3>
+                <p class="ml-subtitle">Unsupervised K-Means (k=3)</p>
+              </div>
+            </div>
+            <div class="ml-persona-body">
+              <div class="persona-name-tag" id="mlPersonaName">Steady Pacer</div>
+              <p id="mlPersonaDescription" class="ml-advice-text">Balanced sessions optimal for streak retention.</p>
+              <div class="persona-distribution" id="mlPersonaDist"></div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -155,10 +243,14 @@
             </div>
           </div>
 
-          <div class="form-row">
             <div class="form-group flex-3">
               <label for="inputNotes">Notes / Topic (optional)</label>
-              <input type="text" id="inputNotes" placeholder="What did you work on or accomplish?">
+              <input type="text" id="inputNotes" placeholder="What did you work on or accomplish? (e.g. inverted binary tree, SQL joins, page replacement)">
+              <div id="aiNlpSuggestion" class="ai-suggestion-box hidden">
+                <span class="ai-sparkle">✨</span>
+                <span class="ai-text">AI detected subject: <strong id="aiDetectedSubject">Data Structures</strong> (<span id="aiConfidenceVal">89%</span> match)</span>
+                <button type="button" id="btnApplyNlpSubject" class="btn-chip-action">Apply</button>
+              </div>
             </div>
             <div class="form-group flex-1 form-submit-col">
               <button type="submit" id="btnSubmitSession" class="btn btn-primary btn-block">

@@ -9,6 +9,7 @@ const {
   formatSessionsToCsv,
   toDateKey
 } = require('./src/streak');
+const ml = require('./src/ml');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -187,6 +188,8 @@ app.get('/api/stats', (req, res) => {
       }
     }
 
+    const mlInsights = ml.generateMlInsights(sessions, streaks.currentStreak);
+
     res.json({
       success: true,
       data: {
@@ -196,9 +199,40 @@ app.get('/api/stats', (req, res) => {
         totalMinutes,
         weekly,
         dailyTrend,
-        subjectDistribution
+        subjectDistribution,
+        mlInsights
       }
     });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+/**
+ * GET /api/ml/insights
+ * Returns ML churn prediction, time-series forecasting, recommendations & clusters.
+ */
+app.get('/api/ml/insights', (req, res) => {
+  try {
+    const sessions = storage.getAllSessions();
+    const streaks = calculateStreaks(sessions);
+    const insights = ml.generateMlInsights(sessions, streaks.currentStreak);
+    res.json({ success: true, data: insights });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+/**
+ * POST /api/ml/predict-subject
+ * NLP inference: predicts subject category from natural language notes.
+ * Body: { notes: string }
+ */
+app.post('/api/ml/predict-subject', (req, res) => {
+  try {
+    const { notes } = req.body;
+    const prediction = ml.predictSubjectFromNotes(notes || '');
+    res.json({ success: true, data: prediction });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }

@@ -83,8 +83,11 @@ async function loadDashboard() {
 
     if (statsRes.success) {
       renderStats(statsRes.data);
-      renderChart(statsRes.data.dailyTrend);
+      renderChart(statsRes.data.dailyTrend, statsRes.data.mlInsights?.forecast);
       renderWeeklyBreakdown(statsRes.data.weekly);
+      if (statsRes.data.mlInsights) {
+        renderMlInsights(statsRes.data.mlInsights);
+      }
     }
 
     if (sessionsRes.success) {
@@ -150,18 +153,31 @@ function renderWeeklyBreakdown(weekly) {
     .join('');
 }
 
-// Render Daily Study Time Chart (Chart.js with Canvas Fallback)
-function renderChart(dailyTrend) {
+// Render Daily Study Time Chart (Chart.js with Canvas Fallback & ML Forecast)
+function renderChart(dailyTrend, forecastData) {
   if (!dailyTrend || dailyTrend.length === 0) return;
 
   const canvas = document.getElementById('studyChart');
   const ctx = canvas.getContext('2d');
+  
   const labels = dailyTrend.map((d) => {
-    // format to MM/DD
     const parts = d.date.split('-');
     return `${parts[1]}/${parts[2]}`;
   });
-  const dataPoints = dailyTrend.map((d) => d.minutes);
+  const actualData = dailyTrend.map((d) => d.minutes);
+
+  // Append ML forecast points if available
+  let forecastDataPoints = new Array(actualData.length).fill(null);
+  if (forecastData && forecastData.forecast && forecastData.forecast.length > 0) {
+    // Connect continuous point from last actual day
+    forecastDataPoints[actualData.length - 1] = actualData[actualData.length - 1];
+    forecastData.forecast.forEach((fc) => {
+      const parts = fc.date.split('-');
+      labels.push(`${parts[1]}/${parts[2]} (FC)`);
+      actualData.push(null);
+      forecastDataPoints.push(fc.predictedMinutes);
+    });
+  }
 
   // If Chart.js is loaded
   if (typeof Chart !== 'undefined') {
@@ -173,31 +189,52 @@ function renderChart(dailyTrend) {
     gradient.addColorStop(0, 'rgba(255, 120, 40, 0.45)');
     gradient.addColorStop(1, 'rgba(255, 120, 40, 0.0)');
 
+    const datasets = [
+      {
+        label: 'Recorded Study Minutes',
+        data: actualData,
+        fill: true,
+        backgroundColor: gradient,
+        borderColor: '#ff7828',
+        borderWidth: 2.5,
+        pointBackgroundColor: '#ff7828',
+        pointBorderColor: '#ffffff',
+        pointRadius: 4,
+        pointHoverRadius: 6,
+        tension: 0.35
+      }
+    ];
+
+    if (forecastData && forecastData.forecast && forecastData.forecast.length > 0) {
+      datasets.push({
+        label: 'ML Forecast (Predicted)',
+        data: forecastDataPoints,
+        fill: false,
+        borderColor: '#06b6d4',
+        borderWidth: 2,
+        borderDash: [5, 5],
+        pointBackgroundColor: '#06b6d4',
+        pointBorderColor: '#ffffff',
+        pointRadius: 4,
+        pointHoverRadius: 6,
+        tension: 0.35
+      });
+    }
+
     chartInstance = new Chart(ctx, {
       type: 'line',
       data: {
         labels: labels,
-        datasets: [
-          {
-            label: 'Study Minutes',
-            data: dataPoints,
-            fill: true,
-            backgroundColor: gradient,
-            borderColor: '#ff7828',
-            borderWidth: 2.5,
-            pointBackgroundColor: '#ff7828',
-            pointBorderColor: '#ffffff',
-            pointRadius: 4,
-            pointHoverRadius: 6,
-            tension: 0.35
-          }
-        ]
+        datasets: datasets
       },
       options: {
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
-          legend: { display: false },
+          legend: {
+            display: datasets.length > 1,
+            labels: { color: '#94a3b8', font: { family: 'JetBrains Mono', size: 10 } }
+          },
           tooltip: {
             backgroundColor: '#1e293b',
             titleColor: '#f8fafc',
@@ -207,7 +244,8 @@ function renderChart(dailyTrend) {
             padding: 10,
             callbacks: {
               label: function (context) {
-                return ` ${context.parsed.y} mins (${formatMinutes(context.parsed.y)})`;
+                const label = context.dataset.label || '';
+                return ` ${label}: ${context.parsed.y} mins`;
               }
             }
           }
@@ -215,7 +253,7 @@ function renderChart(dailyTrend) {
         scales: {
           x: {
             grid: { color: 'rgba(255, 255, 255, 0.05)' },
-            ticks: { color: '#94a3b8', font: { family: 'JetBrains Mono', size: 11 } }
+            ticks: { color: '#94a3b8', font: { family: 'JetBrains Mono', size: 10 } }
           },
           y: {
             beginAtZero: true,
@@ -233,7 +271,7 @@ function renderChart(dailyTrend) {
     });
   } else {
     // Pure Canvas fallback renderer if Chart.js CDN is unavailable
-    renderCanvasFallback(canvas, labels, dataPoints);
+    renderCanvasFallback(canvas, labels, actualData.filter((x) => x !== null));
   }
 }
 
@@ -510,6 +548,138 @@ function escapeHtml(str) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
+}
+
+// Render AI / ML Intelligence Panel
+function renderMlInsights(ml) {
+  if (!ml) return;
+
+  // 1. Churn Risk
+  if (ml.churnRisk) {
+    const churn = ml.churnRisk;
+    const churnPctEl = document.getElementById('mlChurnPercentage');
+    const churnBadgeEl = document.getElementById('mlChurnRiskBadge');
+    const churnProgressEl = document.getElementById('mlChurnProgress');
+    const churnAdviceEl = document.getElementById('mlChurnAdvice');
+
+    if (churnPctEl) churnPctEl.textContent = `${churn.churnPercentage}%`;
+    if (churnProgressEl) {
+      churnProgressEl.style.width = `${churn.churnPercentage}%`;
+      churnProgressEl.style.background =
+        churn.churnPercentage >= 70 ? 'linear-gradient(90deg, #f43f5e, #e11d48)' :
+        churn.churnPercentage >= 40 ? 'linear-gradient(90deg, #f59e0b, #d97706)' :
+        'linear-gradient(90deg, #10b981, #059669)';
+    }
+
+    if (churnBadgeEl) {
+      churnBadgeEl.textContent = `${churn.riskLevel} Risk`;
+      churnBadgeEl.className = 'status-badge ' + (
+        churn.churnPercentage >= 70 ? 'status-inactive' :
+        churn.churnPercentage >= 40 ? 'status-moderate' :
+        'status-active'
+      );
+    }
+
+    if (churnAdviceEl) churnAdviceEl.textContent = churn.actionableAdvice;
+  }
+
+  // 2. Tomorrow's Forecast
+  if (ml.forecast) {
+    const fc = ml.forecast;
+    const tomEl = document.getElementById('mlForecastTomorrow');
+    const trendEl = document.getElementById('mlTrendDirection');
+    const confEl = document.getElementById('mlForecastConfidence');
+
+    if (tomEl) tomEl.textContent = `${fc.projectedTomorrowMinutes} min`;
+    if (trendEl) {
+      trendEl.textContent = fc.trendDirection === 'increasing' ? '↗ Increasing' :
+                            fc.trendDirection === 'decreasing' ? '↘ Decreasing' : '→ Stable';
+      trendEl.className = 'status-badge ' + (fc.trendDirection === 'increasing' ? 'status-active' : 'status-moderate');
+    }
+    if (confEl && fc.forecast && fc.forecast[0]) {
+      confEl.textContent = `Confidence: ${fc.forecast[0].confidenceLower} – ${fc.forecast[0].confidenceUpper} mins (80% CI)`;
+    }
+  }
+
+  // 3. Subject Recommendation
+  if (ml.recommendation) {
+    const rec = ml.recommendation;
+    const recSubEl = document.getElementById('mlRecSubject');
+    const recReasonEl = document.getElementById('mlRecReason');
+
+    if (recSubEl) recSubEl.textContent = rec.recommendedSubject;
+    if (recReasonEl) recReasonEl.textContent = rec.reason;
+
+    const btnApply = document.getElementById('btnApplyRecommendation');
+    if (btnApply) {
+      btnApply.onclick = () => {
+        inputSubject.value = rec.recommendedSubject;
+        inputDuration.value = rec.suggestedDuration;
+        document.getElementById('logSection').scrollIntoView({ behavior: 'smooth' });
+        showToast(`Applied ${rec.recommendedSubject} (${rec.suggestedDuration}m) to form`);
+      };
+    }
+  }
+
+  // 4. Study Persona
+  if (ml.habitClusters) {
+    const cl = ml.habitClusters;
+    const personaEl = document.getElementById('mlPersonaName');
+    const personaDescEl = document.getElementById('mlPersonaDescription');
+    const personaDistEl = document.getElementById('mlPersonaDist');
+
+    if (personaEl) personaEl.textContent = cl.dominantPersona;
+    if (personaDescEl) personaDescEl.textContent = cl.personaDescription;
+    if (personaDistEl && cl.distribution) {
+      personaDistEl.innerHTML = Object.entries(cl.distribution)
+        .map(([name, pct]) => `<span style="color:var(--text-muted); font-size: 0.72rem; margin-right: 8px;">${name}: <strong>${pct}%</strong></span>`)
+        .join('');
+    }
+  }
+}
+
+// Real-time NLP Note Subject Detector
+let nlpDebounceTimer = null;
+const aiNlpSuggestion = document.getElementById('aiNlpSuggestion');
+const aiDetectedSubject = document.getElementById('aiDetectedSubject');
+const aiConfidenceVal = document.getElementById('aiConfidenceVal');
+const btnApplyNlpSubject = document.getElementById('btnApplyNlpSubject');
+
+if (inputNotes) {
+  inputNotes.addEventListener('input', () => {
+    clearTimeout(nlpDebounceTimer);
+    const text = inputNotes.value.trim();
+    if (text.length < 5) {
+      if (aiNlpSuggestion) aiNlpSuggestion.classList.add('hidden');
+      return;
+    }
+
+    nlpDebounceTimer = setTimeout(async () => {
+      try {
+        const res = await fetch('/api/ml/predict-subject', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ notes: text })
+        });
+        const data = await res.json();
+        if (data.success && data.data && data.data.predictedSubject) {
+          aiDetectedSubject.textContent = data.data.predictedSubject;
+          aiConfidenceVal.textContent = `${data.data.confidence}%`;
+          aiNlpSuggestion.classList.remove('hidden');
+
+          btnApplyNlpSubject.onclick = () => {
+            inputSubject.value = data.data.predictedSubject;
+            aiNlpSuggestion.classList.add('hidden');
+            showToast(`Applied subject: ${data.data.predictedSubject}`);
+          };
+        } else {
+          if (aiNlpSuggestion) aiNlpSuggestion.classList.add('hidden');
+        }
+      } catch {
+        // quiet error handling
+      }
+    }, 350);
+  });
 }
 
 // Initialization

@@ -1,0 +1,601 @@
+session_id,date,day_of_week,is_weekend,subject,duration,streak_before,studied_today,notes,churn_next_day
+rec_0001,2025-02-23,6,1,None,0,0,0,Missed study day,0
+rec_0002,2025-02-24,0,0,Web Development,55,1,1,Built responsive UI with React and Tailwind CSS,0
+rec_0003,2025-02-25,1,0,Calculus & Mathematics,65,2,1,Solved partial derivatives and gradient descent vectors,0
+rec_0004,2025-02-26,2,0,Data Structures & Algorithms,68,3,1,Implemented binary search tree and AVL rotations,0
+rec_0005,2025-02-27,3,0,Computer Networks,57,4,1,Congestion control algorithms and socket programming,0
+rec_0006,2025-02-28,4,0,Calculus & Mathematics,47,5,1,Double and triple integrals in polar coordinates,1
+rec_0007,2025-03-01,5,1,None,0,0,0,Missed study day,0
+rec_0008,2025-03-02,6,1,Operating Systems,94,1,1,Implemented multithreading and mutex semaphore locks,1
+rec_0009,2025-03-03,0,0,None,0,0,0,Missed study day,0
+rec_0010,2025-03-04,1,0,Data Structures & Algorithms,41,1,1,Solved dynamic programming knapsack problem,0
+rec_0011,2025-03-05,2,0,Data Structures & Algorithms,67,2,1,Learned heap sort and priority queues,0
+rec_0012,2025-03-06,3,0,Database Systems,69,3,1,Studied B-tree indexing and query optimizer plans,0
+rec_0013,2025-03-07,4,0,Computer Networks,62,4,1,Analyzed TCP three-way handshake and connection teardown,0
+rec_0014,2025-03-08,5,1,Operating Systems,63,5,1,Implemented multithreading and mutex semaphore locks,1
+rec_0015,2025-03-09,6,1,None,0,0,0,Missed study day,0
+rec_0016,2025-03-10,0,0,Database Systems,15,1,1,Studied B-tree indexing and query optimizer plans,0
+rec_0017,2025-03-11,1,0,Web Development,58,2,1,Built responsive UI with React and Tailwind CSS,0
+rec_0018,2025-03-12,2,0,Operating Systems,70,3,1,Implemented multithreading and mutex semaphore locks,0
+rec_0019,2025-03-13,3,0,Database Systems,49,4,1,Database normalization from 1NF to BCNF,0
+rec_0020,2025-03-14,4,0,Data Structures & Algorithms,100,5,1,Practiced graph BFS DFS traversals on LeetCode,1
+rec_0021,2025-03-15,5,1,None,0,0,0,Missed study day,1
+rec_0022,2025-03-16,6,1,None,0,0,0,Missed study day,0
+rec_0023,2025-03-17,0,0,Data Structures & Algorithms,66,1,1,Solved dynamic programming knapsack problem,0
+rec_0024,2025-03-18,1,0,Database Systems,101,2,1,Practiced ACID transactions and isolation levels,1
+rec_0025,2025-03-19,2,0,None,0,0,0,Missed study day,0
+rec_0026,2025-03-20,3,0,Operating Systems,53,1,1,Reviewed CPU scheduling algorithms SJF and Round Robin,1
+rec_0027,2025-03-21,4,0,None,0,0,0,Missed study day,0
+rec_0028,2025-03-22,5,1,Calculus & Mathematics,69,1,1,Limit theorems and Taylor series expansions,0
+rec_0029,2025-03-23,6,1,Operating Systems,46,2,1,Studied virtual memory paging and page replacement algorithms,1
+rec_0030,2025-03-24,0,0,None,0,0,0,Missed study day,0
+rec_0031,2025-03-25,1,0,Operating Systems,54,1,1,Deadlock detection and Banker algorithm notes,0
+rec_0032,2025-03-26,2,0,Database Systems,15,2,1,Studied B-tree indexing and query optimizer plans,1
+rec_0033,2025-03-27,3,0,None,0,0,0,Missed study day,1
+rec_0034,2025-03-28,4,0,None,0,0,0,Missed study day,0
+rec_0035,2025-03-29,5,1,Computer Networks,100,1,1,Analyzed TCP three-way handshake and connection teardown,1
+rec_0036,2025-03-30,6,1,None,0,0,0,Missed study day,0
+rec_0037,2025-03-31,0,0,Web Development,57,1,1,Learned DOM manipulation and async await fetch calls,0
+rec_0038,2025-04-01,1,0,Database Systems,36,2,1,"Wrote complex SQL joins, grouping and aggregations",1
+rec_0039,2025-04-02,2,0,None,0,0,0,Missed study day,1
+rec_0040,2025-04-03,3,0,None,0,0,0,Missed study day,0
+rec_0041,2025-04-04,4,0,Calculus & Mathematics,56,1,1,Solved partial derivatives and gradient descent vectors,1
+rec_0042,2025-04-05,5,1,None,0,0,0,Missed study day,0
+rec_0043,2025-04-06,6,1,Computer Networks,31,1,1,Subnetting IP address calculation and CIDR notation,0
+rec_0044,2025-04-07,0,0,Operating Systems,21,2,1,Studied virtual memory paging and page replacement algorithms,0
+rec_0045,2025-04-08,1,0,Database Systems,46,3,1,"Wrote complex SQL joins, grouping and aggregations",0
+rec_0046,2025-04-09,2,0,Web Development,82,4,1,Learned DOM manipulation and async await fetch calls,0
+rec_0047,2025-04-10,3,0,Operating Systems,28,5,1,Studied virtual memory paging and page replacement algorithms,0
+rec_0048,2025-04-11,4,0,Database Systems,77,6,1,Database normalization from 1NF to BCNF,0
+rec_0049,2025-04-12,5,1,Database Systems,15,7,1,Database normalization from 1NF to BCNF,0
+rec_0050,2025-04-13,6,1,Calculus & Mathematics,42,8,1,Double and triple integrals in polar coordinates,0
+rec_0051,2025-04-14,0,0,Database Systems,61,9,1,Studied B-tree indexing and query optimizer plans,0
+rec_0052,2025-04-15,1,0,Calculus & Mathematics,40,10,1,Solved partial derivatives and gradient descent vectors,0
+rec_0053,2025-04-16,2,0,Calculus & Mathematics,59,11,1,Double and triple integrals in polar coordinates,0
+rec_0054,2025-04-17,3,0,Data Structures & Algorithms,80,12,1,Practiced graph BFS DFS traversals on LeetCode,0
+rec_0055,2025-04-18,4,0,Data Structures & Algorithms,67,13,1,Solved dynamic programming knapsack problem,0
+rec_0056,2025-04-19,5,1,Operating Systems,50,14,1,Implemented multithreading and mutex semaphore locks,1
+rec_0057,2025-04-20,6,1,None,0,0,0,Missed study day,1
+rec_0058,2025-04-21,0,0,None,0,0,0,Missed study day,0
+rec_0059,2025-04-22,1,0,Operating Systems,77,1,1,Deadlock detection and Banker algorithm notes,1
+rec_0060,2025-04-23,2,0,None,0,0,0,Missed study day,0
+rec_0061,2025-04-24,3,0,Data Structures & Algorithms,44,1,1,Learned heap sort and priority queues,0
+rec_0062,2025-04-25,4,0,Computer Networks,39,2,1,Analyzed TCP three-way handshake and connection teardown,1
+rec_0063,2025-04-26,5,1,None,0,0,0,Missed study day,1
+rec_0064,2025-04-27,6,1,None,0,0,0,Missed study day,0
+rec_0065,2025-04-28,0,0,Database Systems,50,1,1,"Wrote complex SQL joins, grouping and aggregations",0
+rec_0066,2025-04-29,1,0,Operating Systems,19,2,1,Deadlock detection and Banker algorithm notes,0
+rec_0067,2025-04-30,2,0,Operating Systems,52,3,1,Studied virtual memory paging and page replacement algorithms,0
+rec_0068,2025-05-01,3,0,Calculus & Mathematics,69,4,1,Solved partial derivatives and gradient descent vectors,0
+rec_0069,2025-05-02,4,0,Calculus & Mathematics,82,5,1,Double and triple integrals in polar coordinates,0
+rec_0070,2025-05-03,5,1,Database Systems,15,6,1,Practiced ACID transactions and isolation levels,0
+rec_0071,2025-05-04,6,1,Database Systems,64,7,1,"Wrote complex SQL joins, grouping and aggregations",1
+rec_0072,2025-05-05,0,0,None,0,0,0,Missed study day,0
+rec_0073,2025-05-06,1,0,Database Systems,48,1,1,Studied B-tree indexing and query optimizer plans,0
+rec_0074,2025-05-07,2,0,Computer Networks,80,2,1,Congestion control algorithms and socket programming,0
+rec_0075,2025-05-08,3,0,Web Development,54,3,1,Constructed Express REST API endpoints with authentication,1
+rec_0076,2025-05-09,4,0,None,0,0,0,Missed study day,1
+rec_0077,2025-05-10,5,1,None,0,0,0,Missed study day,0
+rec_0078,2025-05-11,6,1,Computer Networks,52,1,1,Congestion control algorithms and socket programming,0
+rec_0079,2025-05-12,0,0,Calculus & Mathematics,60,2,1,Double and triple integrals in polar coordinates,0
+rec_0080,2025-05-13,1,0,Calculus & Mathematics,66,3,1,Solved partial derivatives and gradient descent vectors,0
+rec_0081,2025-05-14,2,0,Operating Systems,61,4,1,Deadlock detection and Banker algorithm notes,0
+rec_0082,2025-05-15,3,0,Calculus & Mathematics,55,5,1,Solved partial derivatives and gradient descent vectors,0
+rec_0083,2025-05-16,4,0,Calculus & Mathematics,81,6,1,Differential equations and eigenvalue decomposition,1
+rec_0084,2025-05-17,5,1,None,0,0,0,Missed study day,0
+rec_0085,2025-05-18,6,1,Computer Networks,48,1,1,Subnetting IP address calculation and CIDR notation,0
+rec_0086,2025-05-19,0,0,Web Development,69,2,1,Created fullstack dashboard with Chart.js visualization,0
+rec_0087,2025-05-20,1,0,Data Structures & Algorithms,82,3,1,Implemented binary search tree and AVL rotations,0
+rec_0088,2025-05-21,2,0,Operating Systems,56,4,1,Reviewed CPU scheduling algorithms SJF and Round Robin,0
+rec_0089,2025-05-22,3,0,Web Development,85,5,1,Learned DOM manipulation and async await fetch calls,0
+rec_0090,2025-05-23,4,0,Database Systems,27,6,1,Studied B-tree indexing and query optimizer plans,0
+rec_0091,2025-05-24,5,1,Computer Networks,25,7,1,OSI model layer protocols and packet encapsulation,1
+rec_0092,2025-05-25,6,1,None,0,0,0,Missed study day,0
+rec_0093,2025-05-26,0,0,Operating Systems,49,1,1,Reviewed CPU scheduling algorithms SJF and Round Robin,0
+rec_0094,2025-05-27,1,0,Data Structures & Algorithms,54,2,1,Solved dynamic programming knapsack problem,0
+rec_0095,2025-05-28,2,0,Computer Networks,43,3,1,OSI model layer protocols and packet encapsulation,0
+rec_0096,2025-05-29,3,0,Computer Networks,69,4,1,OSI model layer protocols and packet encapsulation,1
+rec_0097,2025-05-30,4,0,None,0,0,0,Missed study day,1
+rec_0098,2025-05-31,5,1,None,0,0,0,Missed study day,0
+rec_0099,2025-06-01,6,1,Database Systems,36,1,1,Studied B-tree indexing and query optimizer plans,0
+rec_0100,2025-06-02,0,0,Web Development,58,2,1,Learned DOM manipulation and async await fetch calls,0
+rec_0101,2025-06-03,1,0,Database Systems,26,3,1,Practiced ACID transactions and isolation levels,0
+rec_0102,2025-06-04,2,0,Data Structures & Algorithms,91,4,1,Practiced graph BFS DFS traversals on LeetCode,0
+rec_0103,2025-06-05,3,0,Web Development,73,5,1,Constructed Express REST API endpoints with authentication,0
+rec_0104,2025-06-06,4,0,Data Structures & Algorithms,39,6,1,Implemented binary search tree and AVL rotations,1
+rec_0105,2025-06-07,5,1,None,0,0,0,Missed study day,0
+rec_0106,2025-06-08,6,1,Operating Systems,94,1,1,Studied virtual memory paging and page replacement algorithms,0
+rec_0107,2025-06-09,0,0,Calculus & Mathematics,70,2,1,Double and triple integrals in polar coordinates,1
+rec_0108,2025-06-10,1,0,None,0,0,0,Missed study day,0
+rec_0109,2025-06-11,2,0,Operating Systems,41,1,1,Implemented multithreading and mutex semaphore locks,1
+rec_0110,2025-06-12,3,0,None,0,0,0,Missed study day,0
+rec_0111,2025-06-13,4,0,Computer Networks,86,1,1,Congestion control algorithms and socket programming,1
+rec_0112,2025-06-14,5,1,None,0,0,0,Missed study day,1
+rec_0113,2025-06-15,6,1,None,0,0,0,Missed study day,1
+rec_0114,2025-06-16,0,0,None,0,0,0,Missed study day,0
+rec_0115,2025-06-17,1,0,Computer Networks,39,1,1,Analyzed TCP three-way handshake and connection teardown,0
+rec_0116,2025-06-18,2,0,Data Structures & Algorithms,63,2,1,Learned heap sort and priority queues,0
+rec_0117,2025-06-19,3,0,Operating Systems,43,3,1,Implemented multithreading and mutex semaphore locks,0
+rec_0118,2025-06-20,4,0,Operating Systems,42,4,1,Studied virtual memory paging and page replacement algorithms,1
+rec_0119,2025-06-21,5,1,None,0,0,0,Missed study day,0
+rec_0120,2025-06-22,6,1,Computer Networks,64,1,1,Congestion control algorithms and socket programming,0
+rec_0121,2025-06-23,0,0,Calculus & Mathematics,52,2,1,Differential equations and eigenvalue decomposition,0
+rec_0122,2025-06-24,1,0,Web Development,59,3,1,Built responsive UI with React and Tailwind CSS,0
+rec_0123,2025-06-25,2,0,Database Systems,35,4,1,Practiced ACID transactions and isolation levels,0
+rec_0124,2025-06-26,3,0,Calculus & Mathematics,83,5,1,Solved partial derivatives and gradient descent vectors,0
+rec_0125,2025-06-27,4,0,Calculus & Mathematics,57,6,1,Limit theorems and Taylor series expansions,0
+rec_0126,2025-06-28,5,1,Calculus & Mathematics,60,7,1,Double and triple integrals in polar coordinates,0
+rec_0127,2025-06-29,6,1,Data Structures & Algorithms,97,8,1,Solved dynamic programming knapsack problem,0
+rec_0128,2025-06-30,0,0,Data Structures & Algorithms,40,9,1,Solved dynamic programming knapsack problem,0
+rec_0129,2025-07-01,1,0,Computer Networks,37,10,1,OSI model layer protocols and packet encapsulation,0
+rec_0130,2025-07-02,2,0,Operating Systems,66,11,1,Deadlock detection and Banker algorithm notes,0
+rec_0131,2025-07-03,3,0,Database Systems,35,12,1,Studied B-tree indexing and query optimizer plans,0
+rec_0132,2025-07-04,4,0,Data Structures & Algorithms,16,13,1,Solved dynamic programming knapsack problem,0
+rec_0133,2025-07-05,5,1,Database Systems,61,14,1,Studied B-tree indexing and query optimizer plans,0
+rec_0134,2025-07-06,6,1,Database Systems,28,15,1,Database normalization from 1NF to BCNF,0
+rec_0135,2025-07-07,0,0,Computer Networks,59,16,1,OSI model layer protocols and packet encapsulation,0
+rec_0136,2025-07-08,1,0,Operating Systems,62,17,1,Reviewed CPU scheduling algorithms SJF and Round Robin,0
+rec_0137,2025-07-09,2,0,Operating Systems,58,18,1,Deadlock detection and Banker algorithm notes,0
+rec_0138,2025-07-10,3,0,Data Structures & Algorithms,59,19,1,Learned heap sort and priority queues,0
+rec_0139,2025-07-11,4,0,Computer Networks,26,20,1,Congestion control algorithms and socket programming,0
+rec_0140,2025-07-12,5,1,Operating Systems,40,21,1,Implemented multithreading and mutex semaphore locks,0
+rec_0141,2025-07-13,6,1,Data Structures & Algorithms,86,22,1,Implemented binary search tree and AVL rotations,0
+rec_0142,2025-07-14,0,0,Operating Systems,30,23,1,Implemented multithreading and mutex semaphore locks,0
+rec_0143,2025-07-15,1,0,Computer Networks,48,24,1,Subnetting IP address calculation and CIDR notation,1
+rec_0144,2025-07-16,2,0,None,0,0,0,Missed study day,0
+rec_0145,2025-07-17,3,0,Operating Systems,54,1,1,Deadlock detection and Banker algorithm notes,0
+rec_0146,2025-07-18,4,0,Calculus & Mathematics,15,2,1,Limit theorems and Taylor series expansions,1
+rec_0147,2025-07-19,5,1,None,0,0,0,Missed study day,1
+rec_0148,2025-07-20,6,1,None,0,0,0,Missed study day,0
+rec_0149,2025-07-21,0,0,Calculus & Mathematics,27,1,1,Limit theorems and Taylor series expansions,1
+rec_0150,2025-07-22,1,0,None,0,0,0,Missed study day,1
+rec_0151,2025-07-23,2,0,None,0,0,0,Missed study day,0
+rec_0152,2025-07-24,3,0,Web Development,55,1,1,Learned DOM manipulation and async await fetch calls,1
+rec_0153,2025-07-25,4,0,None,0,0,0,Missed study day,0
+rec_0154,2025-07-26,5,1,Computer Networks,16,1,1,Subnetting IP address calculation and CIDR notation,0
+rec_0155,2025-07-27,6,1,Data Structures & Algorithms,51,2,1,Solved dynamic programming knapsack problem,0
+rec_0156,2025-07-28,0,0,Calculus & Mathematics,40,3,1,Solved partial derivatives and gradient descent vectors,0
+rec_0157,2025-07-29,1,0,Operating Systems,46,4,1,Implemented multithreading and mutex semaphore locks,0
+rec_0158,2025-07-30,2,0,Database Systems,62,5,1,Studied B-tree indexing and query optimizer plans,0
+rec_0159,2025-07-31,3,0,Database Systems,89,6,1,Practiced ACID transactions and isolation levels,1
+rec_0160,2025-08-01,4,0,None,0,0,0,Missed study day,1
+rec_0161,2025-08-02,5,1,None,0,0,0,Missed study day,1
+rec_0162,2025-08-03,6,1,None,0,0,0,Missed study day,1
+rec_0163,2025-08-04,0,0,None,0,0,0,Missed study day,1
+rec_0164,2025-08-05,1,0,None,0,0,0,Missed study day,0
+rec_0165,2025-08-06,2,0,Data Structures & Algorithms,69,1,1,Solved dynamic programming knapsack problem,0
+rec_0166,2025-08-07,3,0,Database Systems,84,2,1,Practiced ACID transactions and isolation levels,0
+rec_0167,2025-08-08,4,0,Computer Networks,15,3,1,Subnetting IP address calculation and CIDR notation,0
+rec_0168,2025-08-09,5,1,Web Development,50,4,1,Learned DOM manipulation and async await fetch calls,1
+rec_0169,2025-08-10,6,1,None,0,0,0,Missed study day,1
+rec_0170,2025-08-11,0,0,None,0,0,0,Missed study day,1
+rec_0171,2025-08-12,1,0,None,0,0,0,Missed study day,1
+rec_0172,2025-08-13,2,0,None,0,0,0,Missed study day,1
+rec_0173,2025-08-14,3,0,None,0,0,0,Missed study day,1
+rec_0174,2025-08-15,4,0,None,0,0,0,Missed study day,0
+rec_0175,2025-08-16,5,1,Database Systems,56,1,1,"Wrote complex SQL joins, grouping and aggregations",0
+rec_0176,2025-08-17,6,1,Database Systems,69,2,1,"Wrote complex SQL joins, grouping and aggregations",0
+rec_0177,2025-08-18,0,0,Web Development,71,3,1,Constructed Express REST API endpoints with authentication,0
+rec_0178,2025-08-19,1,0,Web Development,56,4,1,Created fullstack dashboard with Chart.js visualization,0
+rec_0179,2025-08-20,2,0,Data Structures & Algorithms,35,5,1,Learned heap sort and priority queues,0
+rec_0180,2025-08-21,3,0,Calculus & Mathematics,101,6,1,Double and triple integrals in polar coordinates,0
+rec_0181,2025-08-22,4,0,Computer Networks,70,7,1,Analyzed TCP three-way handshake and connection teardown,1
+rec_0182,2025-08-23,5,1,None,0,0,0,Missed study day,1
+rec_0183,2025-08-24,6,1,None,0,0,0,Missed study day,0
+rec_0184,2025-08-25,0,0,Data Structures & Algorithms,44,1,1,Learned heap sort and priority queues,0
+rec_0185,2025-08-26,1,0,Calculus & Mathematics,44,2,1,Double and triple integrals in polar coordinates,0
+rec_0186,2025-08-27,2,0,Web Development,56,3,1,Built responsive UI with React and Tailwind CSS,1
+rec_0187,2025-08-28,3,0,None,0,0,0,Missed study day,0
+rec_0188,2025-08-29,4,0,Web Development,42,1,1,Built responsive UI with React and Tailwind CSS,0
+rec_0189,2025-08-30,5,1,Web Development,16,2,1,Created fullstack dashboard with Chart.js visualization,0
+rec_0190,2025-08-31,6,1,Computer Networks,34,3,1,Subnetting IP address calculation and CIDR notation,0
+rec_0191,2025-09-01,0,0,Computer Networks,62,4,1,OSI model layer protocols and packet encapsulation,1
+rec_0192,2025-09-02,1,0,None,0,0,0,Missed study day,0
+rec_0193,2025-09-03,2,0,Data Structures & Algorithms,41,1,1,Implemented binary search tree and AVL rotations,0
+rec_0194,2025-09-04,3,0,Database Systems,51,2,1,Studied B-tree indexing and query optimizer plans,0
+rec_0195,2025-09-05,4,0,Database Systems,48,3,1,Practiced ACID transactions and isolation levels,0
+rec_0196,2025-09-06,5,1,Web Development,30,4,1,Constructed Express REST API endpoints with authentication,0
+rec_0197,2025-09-07,6,1,Computer Networks,26,5,1,OSI model layer protocols and packet encapsulation,0
+rec_0198,2025-09-08,0,0,Calculus & Mathematics,58,6,1,Differential equations and eigenvalue decomposition,0
+rec_0199,2025-09-09,1,0,Operating Systems,32,7,1,Studied virtual memory paging and page replacement algorithms,0
+rec_0200,2025-09-10,2,0,Database Systems,55,8,1,Practiced ACID transactions and isolation levels,0
+rec_0201,2025-09-11,3,0,Database Systems,77,9,1,Studied B-tree indexing and query optimizer plans,0
+rec_0202,2025-09-12,4,0,Operating Systems,45,10,1,Reviewed CPU scheduling algorithms SJF and Round Robin,1
+rec_0203,2025-09-13,5,1,None,0,0,0,Missed study day,1
+rec_0204,2025-09-14,6,1,None,0,0,0,Missed study day,0
+rec_0205,2025-09-15,0,0,Data Structures & Algorithms,67,1,1,Practiced graph BFS DFS traversals on LeetCode,0
+rec_0206,2025-09-16,1,0,Computer Networks,33,2,1,Subnetting IP address calculation and CIDR notation,0
+rec_0207,2025-09-17,2,0,Computer Networks,69,3,1,Congestion control algorithms and socket programming,0
+rec_0208,2025-09-18,3,0,Data Structures & Algorithms,66,4,1,Practiced graph BFS DFS traversals on LeetCode,0
+rec_0209,2025-09-19,4,0,Calculus & Mathematics,62,5,1,Differential equations and eigenvalue decomposition,0
+rec_0210,2025-09-20,5,1,Calculus & Mathematics,17,6,1,Differential equations and eigenvalue decomposition,0
+rec_0211,2025-09-21,6,1,Database Systems,111,7,1,Studied B-tree indexing and query optimizer plans,0
+rec_0212,2025-09-22,0,0,Operating Systems,64,8,1,Studied virtual memory paging and page replacement algorithms,0
+rec_0213,2025-09-23,1,0,Computer Networks,63,9,1,Subnetting IP address calculation and CIDR notation,0
+rec_0214,2025-09-24,2,0,Computer Networks,23,10,1,OSI model layer protocols and packet encapsulation,1
+rec_0215,2025-09-25,3,0,None,0,0,0,Missed study day,1
+rec_0216,2025-09-26,4,0,None,0,0,0,Missed study day,0
+rec_0217,2025-09-27,5,1,Web Development,58,1,1,Constructed Express REST API endpoints with authentication,0
+rec_0218,2025-09-28,6,1,Computer Networks,39,2,1,Analyzed TCP three-way handshake and connection teardown,0
+rec_0219,2025-09-29,0,0,Computer Networks,51,3,1,Subnetting IP address calculation and CIDR notation,0
+rec_0220,2025-09-30,1,0,Database Systems,57,4,1,Studied B-tree indexing and query optimizer plans,0
+rec_0221,2025-10-01,2,0,Database Systems,56,5,1,Studied B-tree indexing and query optimizer plans,0
+rec_0222,2025-10-02,3,0,Data Structures & Algorithms,54,6,1,Implemented binary search tree and AVL rotations,1
+rec_0223,2025-10-03,4,0,None,0,0,0,Missed study day,0
+rec_0224,2025-10-04,5,1,Data Structures & Algorithms,94,1,1,Implemented binary search tree and AVL rotations,0
+rec_0225,2025-10-05,6,1,Calculus & Mathematics,63,2,1,Double and triple integrals in polar coordinates,0
+rec_0226,2025-10-06,0,0,Database Systems,52,3,1,Database normalization from 1NF to BCNF,1
+rec_0227,2025-10-07,1,0,None,0,0,0,Missed study day,0
+rec_0228,2025-10-08,2,0,Database Systems,47,1,1,Practiced ACID transactions and isolation levels,0
+rec_0229,2025-10-09,3,0,Calculus & Mathematics,80,2,1,Solved partial derivatives and gradient descent vectors,0
+rec_0230,2025-10-10,4,0,Computer Networks,82,3,1,Subnetting IP address calculation and CIDR notation,0
+rec_0231,2025-10-11,5,1,Data Structures & Algorithms,74,4,1,Practiced graph BFS DFS traversals on LeetCode,0
+rec_0232,2025-10-12,6,1,Calculus & Mathematics,56,5,1,Limit theorems and Taylor series expansions,0
+rec_0233,2025-10-13,0,0,Database Systems,55,6,1,Studied B-tree indexing and query optimizer plans,0
+rec_0234,2025-10-14,1,0,Web Development,46,7,1,Created fullstack dashboard with Chart.js visualization,0
+rec_0235,2025-10-15,2,0,Operating Systems,24,8,1,Reviewed CPU scheduling algorithms SJF and Round Robin,0
+rec_0236,2025-10-16,3,0,Computer Networks,24,9,1,Subnetting IP address calculation and CIDR notation,0
+rec_0237,2025-10-17,4,0,Calculus & Mathematics,35,10,1,Double and triple integrals in polar coordinates,0
+rec_0238,2025-10-18,5,1,Web Development,58,11,1,Constructed Express REST API endpoints with authentication,1
+rec_0239,2025-10-19,6,1,None,0,0,0,Missed study day,0
+rec_0240,2025-10-20,0,0,Calculus & Mathematics,48,1,1,Differential equations and eigenvalue decomposition,0
+rec_0241,2025-10-21,1,0,Database Systems,43,2,1,Studied B-tree indexing and query optimizer plans,0
+rec_0242,2025-10-22,2,0,Database Systems,26,3,1,Practiced ACID transactions and isolation levels,0
+rec_0243,2025-10-23,3,0,Data Structures & Algorithms,80,4,1,Solved dynamic programming knapsack problem,0
+rec_0244,2025-10-24,4,0,Operating Systems,34,5,1,Studied virtual memory paging and page replacement algorithms,1
+rec_0245,2025-10-25,5,1,None,0,0,0,Missed study day,1
+rec_0246,2025-10-26,6,1,None,0,0,0,Missed study day,0
+rec_0247,2025-10-27,0,0,Data Structures & Algorithms,56,1,1,Learned heap sort and priority queues,1
+rec_0248,2025-10-28,1,0,None,0,0,0,Missed study day,0
+rec_0249,2025-10-29,2,0,Calculus & Mathematics,42,1,1,Limit theorems and Taylor series expansions,0
+rec_0250,2025-10-30,3,0,Database Systems,77,2,1,Practiced ACID transactions and isolation levels,0
+rec_0251,2025-10-31,4,0,Computer Networks,50,3,1,Analyzed TCP three-way handshake and connection teardown,1
+rec_0252,2025-11-01,5,1,None,0,0,0,Missed study day,0
+rec_0253,2025-11-02,6,1,Computer Networks,25,1,1,Congestion control algorithms and socket programming,1
+rec_0254,2025-11-03,0,0,None,0,0,0,Missed study day,0
+rec_0255,2025-11-04,1,0,Database Systems,55,1,1,"Wrote complex SQL joins, grouping and aggregations",0
+rec_0256,2025-11-05,2,0,Web Development,80,2,1,Built responsive UI with React and Tailwind CSS,0
+rec_0257,2025-11-06,3,0,Calculus & Mathematics,77,3,1,Limit theorems and Taylor series expansions,0
+rec_0258,2025-11-07,4,0,Operating Systems,27,4,1,Deadlock detection and Banker algorithm notes,1
+rec_0259,2025-11-08,5,1,None,0,0,0,Missed study day,1
+rec_0260,2025-11-09,6,1,None,0,0,0,Missed study day,0
+rec_0261,2025-11-10,0,0,Calculus & Mathematics,51,1,1,Double and triple integrals in polar coordinates,1
+rec_0262,2025-11-11,1,0,None,0,0,0,Missed study day,0
+rec_0263,2025-11-12,2,0,Computer Networks,50,1,1,Subnetting IP address calculation and CIDR notation,0
+rec_0264,2025-11-13,3,0,Web Development,55,2,1,Built responsive UI with React and Tailwind CSS,0
+rec_0265,2025-11-14,4,0,Data Structures & Algorithms,61,3,1,Implemented binary search tree and AVL rotations,0
+rec_0266,2025-11-15,5,1,Data Structures & Algorithms,92,4,1,Practiced graph BFS DFS traversals on LeetCode,0
+rec_0267,2025-11-16,6,1,Computer Networks,46,5,1,Congestion control algorithms and socket programming,1
+rec_0268,2025-11-17,0,0,None,0,0,0,Missed study day,1
+rec_0269,2025-11-18,1,0,None,0,0,0,Missed study day,0
+rec_0270,2025-11-19,2,0,Calculus & Mathematics,85,1,1,Double and triple integrals in polar coordinates,0
+rec_0271,2025-11-20,3,0,Calculus & Mathematics,15,2,1,Solved partial derivatives and gradient descent vectors,0
+rec_0272,2025-11-21,4,0,Database Systems,52,3,1,Studied B-tree indexing and query optimizer plans,1
+rec_0273,2025-11-22,5,1,None,0,0,0,Missed study day,0
+rec_0274,2025-11-23,6,1,Data Structures & Algorithms,51,1,1,Learned heap sort and priority queues,1
+rec_0275,2025-11-24,0,0,None,0,0,0,Missed study day,0
+rec_0276,2025-11-25,1,0,Database Systems,71,1,1,Studied B-tree indexing and query optimizer plans,0
+rec_0277,2025-11-26,2,0,Calculus & Mathematics,21,2,1,Double and triple integrals in polar coordinates,1
+rec_0278,2025-11-27,3,0,None,0,0,0,Missed study day,0
+rec_0279,2025-11-28,4,0,Database Systems,87,1,1,Database normalization from 1NF to BCNF,1
+rec_0280,2025-11-29,5,1,None,0,0,0,Missed study day,0
+rec_0281,2025-11-30,6,1,Web Development,53,1,1,Created fullstack dashboard with Chart.js visualization,0
+rec_0282,2025-12-01,0,0,Computer Networks,23,2,1,Subnetting IP address calculation and CIDR notation,0
+rec_0283,2025-12-02,1,0,Data Structures & Algorithms,91,3,1,Solved dynamic programming knapsack problem,1
+rec_0284,2025-12-03,2,0,None,0,0,0,Missed study day,1
+rec_0285,2025-12-04,3,0,None,0,0,0,Missed study day,0
+rec_0286,2025-12-05,4,0,Calculus & Mathematics,91,1,1,Limit theorems and Taylor series expansions,0
+rec_0287,2025-12-06,5,1,Operating Systems,30,2,1,Implemented multithreading and mutex semaphore locks,0
+rec_0288,2025-12-07,6,1,Web Development,70,3,1,Learned DOM manipulation and async await fetch calls,0
+rec_0289,2025-12-08,0,0,Database Systems,31,4,1,Practiced ACID transactions and isolation levels,1
+rec_0290,2025-12-09,1,0,None,0,0,0,Missed study day,0
+rec_0291,2025-12-10,2,0,Database Systems,23,1,1,"Wrote complex SQL joins, grouping and aggregations",0
+rec_0292,2025-12-11,3,0,Operating Systems,24,2,1,Implemented multithreading and mutex semaphore locks,1
+rec_0293,2025-12-12,4,0,None,0,0,0,Missed study day,0
+rec_0294,2025-12-13,5,1,Data Structures & Algorithms,21,1,1,Implemented binary search tree and AVL rotations,0
+rec_0295,2025-12-14,6,1,Computer Networks,53,2,1,OSI model layer protocols and packet encapsulation,1
+rec_0296,2025-12-15,0,0,None,0,0,0,Missed study day,0
+rec_0297,2025-12-16,1,0,Web Development,59,1,1,Created fullstack dashboard with Chart.js visualization,0
+rec_0298,2025-12-17,2,0,Calculus & Mathematics,29,2,1,Double and triple integrals in polar coordinates,0
+rec_0299,2025-12-18,3,0,Data Structures & Algorithms,70,3,1,Learned heap sort and priority queues,0
+rec_0300,2025-12-19,4,0,Operating Systems,28,4,1,Implemented multithreading and mutex semaphore locks,0
+rec_0301,2025-12-20,5,1,Web Development,55,5,1,Created fullstack dashboard with Chart.js visualization,0
+rec_0302,2025-12-21,6,1,Data Structures & Algorithms,73,6,1,Solved dynamic programming knapsack problem,0
+rec_0303,2025-12-22,0,0,Operating Systems,41,7,1,Studied virtual memory paging and page replacement algorithms,0
+rec_0304,2025-12-23,1,0,Web Development,71,8,1,Created fullstack dashboard with Chart.js visualization,0
+rec_0305,2025-12-24,2,0,Database Systems,53,9,1,Studied B-tree indexing and query optimizer plans,0
+rec_0306,2025-12-25,3,0,Database Systems,60,10,1,Practiced ACID transactions and isolation levels,0
+rec_0307,2025-12-26,4,0,Calculus & Mathematics,47,11,1,Differential equations and eigenvalue decomposition,1
+rec_0308,2025-12-27,5,1,None,0,0,0,Missed study day,0
+rec_0309,2025-12-28,6,1,Computer Networks,52,1,1,Analyzed TCP three-way handshake and connection teardown,1
+rec_0310,2025-12-29,0,0,None,0,0,0,Missed study day,1
+rec_0311,2025-12-30,1,0,None,0,0,0,Missed study day,1
+rec_0312,2025-12-31,2,0,None,0,0,0,Missed study day,1
+rec_0313,2026-01-01,3,0,None,0,0,0,Missed study day,1
+rec_0314,2026-01-02,4,0,None,0,0,0,Missed study day,0
+rec_0315,2026-01-03,5,1,Web Development,56,1,1,Constructed Express REST API endpoints with authentication,1
+rec_0316,2026-01-04,6,1,None,0,0,0,Missed study day,0
+rec_0317,2026-01-05,0,0,Computer Networks,56,1,1,Subnetting IP address calculation and CIDR notation,0
+rec_0318,2026-01-06,1,0,Computer Networks,20,2,1,Analyzed TCP three-way handshake and connection teardown,0
+rec_0319,2026-01-07,2,0,Database Systems,73,3,1,Database normalization from 1NF to BCNF,0
+rec_0320,2026-01-08,3,0,Web Development,58,4,1,Learned DOM manipulation and async await fetch calls,0
+rec_0321,2026-01-09,4,0,Operating Systems,65,5,1,Reviewed CPU scheduling algorithms SJF and Round Robin,0
+rec_0322,2026-01-10,5,1,Web Development,88,6,1,Constructed Express REST API endpoints with authentication,0
+rec_0323,2026-01-11,6,1,Database Systems,71,7,1,Studied B-tree indexing and query optimizer plans,1
+rec_0324,2026-01-12,0,0,None,0,0,0,Missed study day,0
+rec_0325,2026-01-13,1,0,Data Structures & Algorithms,51,1,1,Practiced graph BFS DFS traversals on LeetCode,1
+rec_0326,2026-01-14,2,0,None,0,0,0,Missed study day,0
+rec_0327,2026-01-15,3,0,Computer Networks,45,1,1,OSI model layer protocols and packet encapsulation,0
+rec_0328,2026-01-16,4,0,Database Systems,15,2,1,"Wrote complex SQL joins, grouping and aggregations",0
+rec_0329,2026-01-17,5,1,Data Structures & Algorithms,26,3,1,Solved dynamic programming knapsack problem,0
+rec_0330,2026-01-18,6,1,Computer Networks,63,4,1,OSI model layer protocols and packet encapsulation,0
+rec_0331,2026-01-19,0,0,Operating Systems,27,5,1,Reviewed CPU scheduling algorithms SJF and Round Robin,1
+rec_0332,2026-01-20,1,0,None,0,0,0,Missed study day,0
+rec_0333,2026-01-21,2,0,Data Structures & Algorithms,59,1,1,Learned heap sort and priority queues,1
+rec_0334,2026-01-22,3,0,None,0,0,0,Missed study day,0
+rec_0335,2026-01-23,4,0,Database Systems,59,1,1,"Wrote complex SQL joins, grouping and aggregations",0
+rec_0336,2026-01-24,5,1,Database Systems,59,2,1,"Wrote complex SQL joins, grouping and aggregations",0
+rec_0337,2026-01-25,6,1,Calculus & Mathematics,69,3,1,Limit theorems and Taylor series expansions,0
+rec_0338,2026-01-26,0,0,Computer Networks,71,4,1,Subnetting IP address calculation and CIDR notation,1
+rec_0339,2026-01-27,1,0,None,0,0,0,Missed study day,0
+rec_0340,2026-01-28,2,0,Database Systems,19,1,1,Studied B-tree indexing and query optimizer plans,0
+rec_0341,2026-01-29,3,0,Web Development,23,2,1,Constructed Express REST API endpoints with authentication,0
+rec_0342,2026-01-30,4,0,Operating Systems,60,3,1,Reviewed CPU scheduling algorithms SJF and Round Robin,0
+rec_0343,2026-01-31,5,1,Computer Networks,47,4,1,OSI model layer protocols and packet encapsulation,0
+rec_0344,2026-02-01,6,1,Web Development,58,5,1,Created fullstack dashboard with Chart.js visualization,0
+rec_0345,2026-02-02,0,0,Operating Systems,64,6,1,Studied virtual memory paging and page replacement algorithms,0
+rec_0346,2026-02-03,1,0,Web Development,55,7,1,Constructed Express REST API endpoints with authentication,0
+rec_0347,2026-02-04,2,0,Calculus & Mathematics,65,8,1,Double and triple integrals in polar coordinates,0
+rec_0348,2026-02-05,3,0,Operating Systems,49,9,1,Studied virtual memory paging and page replacement algorithms,0
+rec_0349,2026-02-06,4,0,Operating Systems,64,10,1,Implemented multithreading and mutex semaphore locks,0
+rec_0350,2026-02-07,5,1,Operating Systems,85,11,1,Implemented multithreading and mutex semaphore locks,0
+rec_0351,2026-02-08,6,1,Operating Systems,80,12,1,Reviewed CPU scheduling algorithms SJF and Round Robin,0
+rec_0352,2026-02-09,0,0,Web Development,86,13,1,Built responsive UI with React and Tailwind CSS,0
+rec_0353,2026-02-10,1,0,Database Systems,65,14,1,Practiced ACID transactions and isolation levels,0
+rec_0354,2026-02-11,2,0,Calculus & Mathematics,36,15,1,Double and triple integrals in polar coordinates,1
+rec_0355,2026-02-12,3,0,None,0,0,0,Missed study day,0
+rec_0356,2026-02-13,4,0,Computer Networks,42,1,1,OSI model layer protocols and packet encapsulation,0
+rec_0357,2026-02-14,5,1,Data Structures & Algorithms,76,2,1,Learned heap sort and priority queues,0
+rec_0358,2026-02-15,6,1,Data Structures & Algorithms,63,3,1,Learned heap sort and priority queues,0
+rec_0359,2026-02-16,0,0,Database Systems,62,4,1,Database normalization from 1NF to BCNF,0
+rec_0360,2026-02-17,1,0,Web Development,58,5,1,Learned DOM manipulation and async await fetch calls,0
+rec_0361,2026-02-18,2,0,Calculus & Mathematics,33,6,1,Limit theorems and Taylor series expansions,0
+rec_0362,2026-02-19,3,0,Computer Networks,50,7,1,Analyzed TCP three-way handshake and connection teardown,1
+rec_0363,2026-02-20,4,0,None,0,0,0,Missed study day,1
+rec_0364,2026-02-21,5,1,None,0,0,0,Missed study day,1
+rec_0365,2026-02-22,6,1,None,0,0,0,Missed study day,1
+rec_0366,2026-02-23,0,0,None,0,0,0,Missed study day,0
+rec_0367,2026-02-24,1,0,Database Systems,70,1,1,Practiced ACID transactions and isolation levels,0
+rec_0368,2026-02-25,2,0,Computer Networks,41,2,1,Analyzed TCP three-way handshake and connection teardown,0
+rec_0369,2026-02-26,3,0,Web Development,45,3,1,Constructed Express REST API endpoints with authentication,0
+rec_0370,2026-02-27,4,0,Database Systems,38,4,1,"Wrote complex SQL joins, grouping and aggregations",0
+rec_0371,2026-02-28,5,1,Data Structures & Algorithms,62,5,1,Solved dynamic programming knapsack problem,1
+rec_0372,2026-03-01,6,1,None,0,0,0,Missed study day,0
+rec_0373,2026-03-02,0,0,Calculus & Mathematics,59,1,1,Differential equations and eigenvalue decomposition,0
+rec_0374,2026-03-03,1,0,Database Systems,37,2,1,Practiced ACID transactions and isolation levels,1
+rec_0375,2026-03-04,2,0,None,0,0,0,Missed study day,1
+rec_0376,2026-03-05,3,0,None,0,0,0,Missed study day,1
+rec_0377,2026-03-06,4,0,None,0,0,0,Missed study day,1
+rec_0378,2026-03-07,5,1,None,0,0,0,Missed study day,0
+rec_0379,2026-03-08,6,1,Calculus & Mathematics,78,1,1,Double and triple integrals in polar coordinates,0
+rec_0380,2026-03-09,0,0,Database Systems,56,2,1,Studied B-tree indexing and query optimizer plans,0
+rec_0381,2026-03-10,1,0,Web Development,64,3,1,Constructed Express REST API endpoints with authentication,1
+rec_0382,2026-03-11,2,0,None,0,0,0,Missed study day,1
+rec_0383,2026-03-12,3,0,None,0,0,0,Missed study day,1
+rec_0384,2026-03-13,4,0,None,0,0,0,Missed study day,1
+rec_0385,2026-03-14,5,1,None,0,0,0,Missed study day,1
+rec_0386,2026-03-15,6,1,None,0,0,0,Missed study day,0
+rec_0387,2026-03-16,0,0,Data Structures & Algorithms,32,1,1,Solved dynamic programming knapsack problem,0
+rec_0388,2026-03-17,1,0,Web Development,36,2,1,Learned DOM manipulation and async await fetch calls,1
+rec_0389,2026-03-18,2,0,None,0,0,0,Missed study day,0
+rec_0390,2026-03-19,3,0,Operating Systems,72,1,1,Deadlock detection and Banker algorithm notes,0
+rec_0391,2026-03-20,4,0,Computer Networks,36,2,1,Analyzed TCP three-way handshake and connection teardown,0
+rec_0392,2026-03-21,5,1,Calculus & Mathematics,59,3,1,Differential equations and eigenvalue decomposition,0
+rec_0393,2026-03-22,6,1,Web Development,75,4,1,Learned DOM manipulation and async await fetch calls,1
+rec_0394,2026-03-23,0,0,None,0,0,0,Missed study day,0
+rec_0395,2026-03-24,1,0,Data Structures & Algorithms,63,1,1,Implemented binary search tree and AVL rotations,0
+rec_0396,2026-03-25,2,0,Web Development,47,2,1,Created fullstack dashboard with Chart.js visualization,0
+rec_0397,2026-03-26,3,0,Database Systems,38,3,1,Database normalization from 1NF to BCNF,1
+rec_0398,2026-03-27,4,0,None,0,0,0,Missed study day,0
+rec_0399,2026-03-28,5,1,Database Systems,42,1,1,"Wrote complex SQL joins, grouping and aggregations",0
+rec_0400,2026-03-29,6,1,Computer Networks,34,2,1,OSI model layer protocols and packet encapsulation,0
+rec_0401,2026-03-30,0,0,Database Systems,41,3,1,"Wrote complex SQL joins, grouping and aggregations",0
+rec_0402,2026-03-31,1,0,Web Development,87,4,1,Learned DOM manipulation and async await fetch calls,0
+rec_0403,2026-04-01,2,0,Data Structures & Algorithms,43,5,1,Implemented binary search tree and AVL rotations,0
+rec_0404,2026-04-02,3,0,Database Systems,63,6,1,Database normalization from 1NF to BCNF,0
+rec_0405,2026-04-03,4,0,Computer Networks,72,7,1,OSI model layer protocols and packet encapsulation,0
+rec_0406,2026-04-04,5,1,Computer Networks,58,8,1,Analyzed TCP three-way handshake and connection teardown,1
+rec_0407,2026-04-05,6,1,None,0,0,0,Missed study day,0
+rec_0408,2026-04-06,0,0,Calculus & Mathematics,56,1,1,Limit theorems and Taylor series expansions,0
+rec_0409,2026-04-07,1,0,Database Systems,49,2,1,Studied B-tree indexing and query optimizer plans,0
+rec_0410,2026-04-08,2,0,Calculus & Mathematics,74,3,1,Limit theorems and Taylor series expansions,1
+rec_0411,2026-04-09,3,0,None,0,0,0,Missed study day,1
+rec_0412,2026-04-10,4,0,None,0,0,0,Missed study day,0
+rec_0413,2026-04-11,5,1,Data Structures & Algorithms,56,1,1,Implemented binary search tree and AVL rotations,0
+rec_0414,2026-04-12,6,1,Web Development,81,2,1,Learned DOM manipulation and async await fetch calls,0
+rec_0415,2026-04-13,0,0,Operating Systems,80,3,1,Implemented multithreading and mutex semaphore locks,1
+rec_0416,2026-04-14,1,0,None,0,0,0,Missed study day,0
+rec_0417,2026-04-15,2,0,Computer Networks,68,1,1,Subnetting IP address calculation and CIDR notation,0
+rec_0418,2026-04-16,3,0,Operating Systems,54,2,1,Implemented multithreading and mutex semaphore locks,1
+rec_0419,2026-04-17,4,0,None,0,0,0,Missed study day,1
+rec_0420,2026-04-18,5,1,None,0,0,0,Missed study day,0
+rec_0421,2026-04-19,6,1,Computer Networks,67,1,1,Congestion control algorithms and socket programming,0
+rec_0422,2026-04-20,0,0,Calculus & Mathematics,56,2,1,Differential equations and eigenvalue decomposition,1
+rec_0423,2026-04-21,1,0,None,0,0,0,Missed study day,0
+rec_0424,2026-04-22,2,0,Operating Systems,33,1,1,Deadlock detection and Banker algorithm notes,0
+rec_0425,2026-04-23,3,0,Database Systems,30,2,1,"Wrote complex SQL joins, grouping and aggregations",0
+rec_0426,2026-04-24,4,0,Data Structures & Algorithms,28,3,1,Solved dynamic programming knapsack problem,0
+rec_0427,2026-04-25,5,1,Data Structures & Algorithms,90,4,1,Implemented binary search tree and AVL rotations,1
+rec_0428,2026-04-26,6,1,None,0,0,0,Missed study day,1
+rec_0429,2026-04-27,0,0,None,0,0,0,Missed study day,0
+rec_0430,2026-04-28,1,0,Calculus & Mathematics,68,1,1,Limit theorems and Taylor series expansions,0
+rec_0431,2026-04-29,2,0,Calculus & Mathematics,86,2,1,Solved partial derivatives and gradient descent vectors,0
+rec_0432,2026-04-30,3,0,Calculus & Mathematics,45,3,1,Double and triple integrals in polar coordinates,0
+rec_0433,2026-05-01,4,0,Database Systems,15,4,1,Practiced ACID transactions and isolation levels,0
+rec_0434,2026-05-02,5,1,Web Development,54,5,1,Built responsive UI with React and Tailwind CSS,0
+rec_0435,2026-05-03,6,1,Operating Systems,85,6,1,Deadlock detection and Banker algorithm notes,0
+rec_0436,2026-05-04,0,0,Calculus & Mathematics,62,7,1,Double and triple integrals in polar coordinates,0
+rec_0437,2026-05-05,1,0,Web Development,28,8,1,Built responsive UI with React and Tailwind CSS,0
+rec_0438,2026-05-06,2,0,Computer Networks,77,9,1,OSI model layer protocols and packet encapsulation,0
+rec_0439,2026-05-07,3,0,Data Structures & Algorithms,36,10,1,Solved dynamic programming knapsack problem,0
+rec_0440,2026-05-08,4,0,Computer Networks,47,11,1,Subnetting IP address calculation and CIDR notation,0
+rec_0441,2026-05-09,5,1,Calculus & Mathematics,31,12,1,Differential equations and eigenvalue decomposition,1
+rec_0442,2026-05-10,6,1,None,0,0,0,Missed study day,0
+rec_0443,2026-05-11,0,0,Database Systems,16,1,1,Database normalization from 1NF to BCNF,0
+rec_0444,2026-05-12,1,0,Data Structures & Algorithms,47,2,1,Solved dynamic programming knapsack problem,1
+rec_0445,2026-05-13,2,0,None,0,0,0,Missed study day,0
+rec_0446,2026-05-14,3,0,Computer Networks,73,1,1,Analyzed TCP three-way handshake and connection teardown,0
+rec_0447,2026-05-15,4,0,Database Systems,51,2,1,Studied B-tree indexing and query optimizer plans,0
+rec_0448,2026-05-16,5,1,Operating Systems,54,3,1,Reviewed CPU scheduling algorithms SJF and Round Robin,1
+rec_0449,2026-05-17,6,1,None,0,0,0,Missed study day,0
+rec_0450,2026-05-18,0,0,Operating Systems,66,1,1,Reviewed CPU scheduling algorithms SJF and Round Robin,1
+rec_0451,2026-05-19,1,0,None,0,0,0,Missed study day,0
+rec_0452,2026-05-20,2,0,Calculus & Mathematics,54,1,1,Solved partial derivatives and gradient descent vectors,0
+rec_0453,2026-05-21,3,0,Calculus & Mathematics,68,2,1,Double and triple integrals in polar coordinates,0
+rec_0454,2026-05-22,4,0,Computer Networks,69,3,1,Subnetting IP address calculation and CIDR notation,1
+rec_0455,2026-05-23,5,1,None,0,0,0,Missed study day,0
+rec_0456,2026-05-24,6,1,Web Development,48,1,1,Created fullstack dashboard with Chart.js visualization,0
+rec_0457,2026-05-25,0,0,Computer Networks,41,2,1,Congestion control algorithms and socket programming,0
+rec_0458,2026-05-26,1,0,Operating Systems,41,3,1,Deadlock detection and Banker algorithm notes,1
+rec_0459,2026-05-27,2,0,None,0,0,0,Missed study day,0
+rec_0460,2026-05-28,3,0,Computer Networks,88,1,1,Congestion control algorithms and socket programming,0
+rec_0461,2026-05-29,4,0,Web Development,59,2,1,Created fullstack dashboard with Chart.js visualization,1
+rec_0462,2026-05-30,5,1,None,0,0,0,Missed study day,1
+rec_0463,2026-05-31,6,1,None,0,0,0,Missed study day,1
+rec_0464,2026-06-01,0,0,None,0,0,0,Missed study day,0
+rec_0465,2026-06-02,1,0,Web Development,31,1,1,Built responsive UI with React and Tailwind CSS,0
+rec_0466,2026-06-03,2,0,Web Development,46,2,1,Built responsive UI with React and Tailwind CSS,0
+rec_0467,2026-06-04,3,0,Operating Systems,51,3,1,Reviewed CPU scheduling algorithms SJF and Round Robin,0
+rec_0468,2026-06-05,4,0,Calculus & Mathematics,67,4,1,Double and triple integrals in polar coordinates,1
+rec_0469,2026-06-06,5,1,None,0,0,0,Missed study day,1
+rec_0470,2026-06-07,6,1,None,0,0,0,Missed study day,1
+rec_0471,2026-06-08,0,0,None,0,0,0,Missed study day,0
+rec_0472,2026-06-09,1,0,Database Systems,72,1,1,Studied B-tree indexing and query optimizer plans,0
+rec_0473,2026-06-10,2,0,Data Structures & Algorithms,51,2,1,Implemented binary search tree and AVL rotations,1
+rec_0474,2026-06-11,3,0,None,0,0,0,Missed study day,0
+rec_0475,2026-06-12,4,0,Operating Systems,58,1,1,Implemented multithreading and mutex semaphore locks,0
+rec_0476,2026-06-13,5,1,Database Systems,51,2,1,Practiced ACID transactions and isolation levels,0
+rec_0477,2026-06-14,6,1,Data Structures & Algorithms,44,3,1,Implemented binary search tree and AVL rotations,0
+rec_0478,2026-06-15,0,0,Operating Systems,67,4,1,Deadlock detection and Banker algorithm notes,0
+rec_0479,2026-06-16,1,0,Web Development,33,5,1,Constructed Express REST API endpoints with authentication,0
+rec_0480,2026-06-17,2,0,Data Structures & Algorithms,57,6,1,Learned heap sort and priority queues,0
+rec_0481,2026-06-18,3,0,Database Systems,83,7,1,"Wrote complex SQL joins, grouping and aggregations",0
+rec_0482,2026-06-19,4,0,Calculus & Mathematics,55,8,1,Limit theorems and Taylor series expansions,0
+rec_0483,2026-06-20,5,1,Web Development,66,9,1,Constructed Express REST API endpoints with authentication,0
+rec_0484,2026-06-21,6,1,Operating Systems,50,10,1,Reviewed CPU scheduling algorithms SJF and Round Robin,0
+rec_0485,2026-06-22,0,0,Calculus & Mathematics,47,11,1,Solved partial derivatives and gradient descent vectors,0
+rec_0486,2026-06-23,1,0,Database Systems,74,12,1,Studied B-tree indexing and query optimizer plans,0
+rec_0487,2026-06-24,2,0,Data Structures & Algorithms,60,13,1,Solved dynamic programming knapsack problem,0
+rec_0488,2026-06-25,3,0,Web Development,56,14,1,Built responsive UI with React and Tailwind CSS,0
+rec_0489,2026-06-26,4,0,Computer Networks,84,15,1,OSI model layer protocols and packet encapsulation,0
+rec_0490,2026-06-27,5,1,Web Development,19,16,1,Constructed Express REST API endpoints with authentication,1
+rec_0491,2026-06-28,6,1,None,0,0,0,Missed study day,0
+rec_0492,2026-06-29,0,0,Computer Networks,44,1,1,Congestion control algorithms and socket programming,0
+rec_0493,2026-06-30,1,0,Operating Systems,86,2,1,Deadlock detection and Banker algorithm notes,0
+rec_0494,2026-07-01,2,0,Operating Systems,68,3,1,Studied virtual memory paging and page replacement algorithms,1
+rec_0495,2026-07-02,3,0,None,0,0,0,Missed study day,1
+rec_0496,2026-07-03,4,0,None,0,0,0,Missed study day,0
+rec_0497,2026-07-04,5,1,Web Development,15,1,1,Created fullstack dashboard with Chart.js visualization,0
+rec_0498,2026-07-05,6,1,Computer Networks,49,2,1,Subnetting IP address calculation and CIDR notation,0
+rec_0499,2026-07-06,0,0,Data Structures & Algorithms,66,3,1,Implemented binary search tree and AVL rotations,1
+rec_0500,2026-07-07,1,0,None,0,0,0,Missed study day,0
+rec_0501,2026-07-08,2,0,Database Systems,41,1,1,Practiced ACID transactions and isolation levels,1
+rec_0502,2026-07-09,3,0,None,0,0,0,Missed study day,0
+rec_0503,2026-07-10,4,0,Operating Systems,31,1,1,Reviewed CPU scheduling algorithms SJF and Round Robin,1
+rec_0504,2026-07-11,5,1,None,0,0,0,Missed study day,1
+rec_0505,2026-07-12,6,1,None,0,0,0,Missed study day,0
+rec_0506,2026-07-13,0,0,Calculus & Mathematics,55,1,1,Double and triple integrals in polar coordinates,0
+rec_0507,2026-07-14,1,0,Web Development,69,2,1,Learned DOM manipulation and async await fetch calls,0
+rec_0508,2026-07-15,2,0,Calculus & Mathematics,65,3,1,Limit theorems and Taylor series expansions,0
+rec_0509,2026-07-16,3,0,Database Systems,51,4,1,Studied B-tree indexing and query optimizer plans,0
+rec_0510,2026-07-17,4,0,Database Systems,59,5,1,Studied B-tree indexing and query optimizer plans,1
+rec_0511,2026-07-18,5,1,None,0,0,0,Missed study day,1
+rec_0512,2026-07-19,6,1,None,0,0,0,Missed study day,0
+rec_0513,2026-07-20,0,0,Computer Networks,42,1,1,Subnetting IP address calculation and CIDR notation,1
+rec_0514,2026-07-21,1,0,None,0,0,0,Missed study day,0
+rec_0515,2026-07-22,2,0,Calculus & Mathematics,40,1,1,Limit theorems and Taylor series expansions,0
+rec_0516,2026-07-23,3,0,Data Structures & Algorithms,57,2,1,Solved dynamic programming knapsack problem,0
+rec_0517,2026-07-24,4,0,Calculus & Mathematics,83,3,1,Solved partial derivatives and gradient descent vectors,1
+rec_0518,2026-07-25,5,1,None,0,0,0,Missed study day,1
+rec_0519,2026-07-26,6,1,None,0,0,0,Missed study day,1
+rec_0520,2026-07-27,0,0,None,0,0,0,Missed study day,0
+rec_0521,2026-07-28,1,0,Data Structures & Algorithms,33,1,1,Learned heap sort and priority queues,0
+rec_0522,2026-07-29,2,0,Web Development,43,2,1,Constructed Express REST API endpoints with authentication,1
+rec_0523,2026-07-30,3,0,None,0,0,0,Missed study day,0
+rec_0524,2026-07-31,4,0,Operating Systems,35,1,1,Studied virtual memory paging and page replacement algorithms,0
+rec_0525,2026-08-01,5,1,Web Development,55,2,1,Created fullstack dashboard with Chart.js visualization,0
+rec_0526,2026-08-02,6,1,Calculus & Mathematics,45,3,1,Limit theorems and Taylor series expansions,0
+rec_0527,2026-08-03,0,0,Operating Systems,98,4,1,Studied virtual memory paging and page replacement algorithms,0
+rec_0528,2026-08-04,1,0,Computer Networks,46,5,1,OSI model layer protocols and packet encapsulation,0
+rec_0529,2026-08-05,2,0,Computer Networks,57,6,1,Analyzed TCP three-way handshake and connection teardown,0
+rec_0530,2026-08-06,3,0,Web Development,85,7,1,Constructed Express REST API endpoints with authentication,1
+rec_0531,2026-08-07,4,0,None,0,0,0,Missed study day,0
+rec_0532,2026-08-08,5,1,Data Structures & Algorithms,30,1,1,Practiced graph BFS DFS traversals on LeetCode,1
+rec_0533,2026-08-09,6,1,None,0,0,0,Missed study day,0
+rec_0534,2026-08-10,0,0,Database Systems,80,1,1,Studied B-tree indexing and query optimizer plans,0
+rec_0535,2026-08-11,1,0,Calculus & Mathematics,59,2,1,Double and triple integrals in polar coordinates,0
+rec_0536,2026-08-12,2,0,Data Structures & Algorithms,73,3,1,Learned heap sort and priority queues,0
+rec_0537,2026-08-13,3,0,Database Systems,63,4,1,"Wrote complex SQL joins, grouping and aggregations",0
+rec_0538,2026-08-14,4,0,Web Development,41,5,1,Learned DOM manipulation and async await fetch calls,0
+rec_0539,2026-08-15,5,1,Calculus & Mathematics,37,6,1,Double and triple integrals in polar coordinates,1
+rec_0540,2026-08-16,6,1,None,0,0,0,Missed study day,0
+rec_0541,2026-08-17,0,0,Calculus & Mathematics,60,1,1,Solved partial derivatives and gradient descent vectors,0
+rec_0542,2026-08-18,1,0,Web Development,51,2,1,Constructed Express REST API endpoints with authentication,0
+rec_0543,2026-08-19,2,0,Computer Networks,62,3,1,OSI model layer protocols and packet encapsulation,1
+rec_0544,2026-08-20,3,0,None,0,0,0,Missed study day,0
+rec_0545,2026-08-21,4,0,Computer Networks,102,1,1,OSI model layer protocols and packet encapsulation,0
+rec_0546,2026-08-22,5,1,Web Development,48,2,1,Constructed Express REST API endpoints with authentication,1
+rec_0547,2026-08-23,6,1,None,0,0,0,Missed study day,0
+rec_0548,2026-08-24,0,0,Operating Systems,49,1,1,Reviewed CPU scheduling algorithms SJF and Round Robin,1
+rec_0549,2026-08-25,1,0,None,0,0,0,Missed study day,0
+rec_0550,2026-08-26,2,0,Data Structures & Algorithms,97,1,1,Solved dynamic programming knapsack problem,0
+rec_0551,2026-08-27,3,0,Calculus & Mathematics,78,2,1,Limit theorems and Taylor series expansions,0
+rec_0552,2026-08-28,4,0,Data Structures & Algorithms,26,3,1,Solved dynamic programming knapsack problem,1
+rec_0553,2026-08-29,5,1,None,0,0,0,Missed study day,0
+rec_0554,2026-08-30,6,1,Operating Systems,55,1,1,Deadlock detection and Banker algorithm notes,0
+rec_0555,2026-08-31,0,0,Data Structures & Algorithms,50,2,1,Learned heap sort and priority queues,0
+rec_0556,2026-09-01,1,0,Operating Systems,44,3,1,Reviewed CPU scheduling algorithms SJF and Round Robin,0
+rec_0557,2026-09-02,2,0,Web Development,66,4,1,Learned DOM manipulation and async await fetch calls,1
+rec_0558,2026-09-03,3,0,None,0,0,0,Missed study day,0
+rec_0559,2026-09-04,4,0,Web Development,41,1,1,Built responsive UI with React and Tailwind CSS,0
+rec_0560,2026-09-05,5,1,Database Systems,70,2,1,Database normalization from 1NF to BCNF,0
+rec_0561,2026-09-06,6,1,Web Development,70,3,1,Created fullstack dashboard with Chart.js visualization,1
+rec_0562,2026-09-07,0,0,None,0,0,0,Missed study day,0
+rec_0563,2026-09-08,1,0,Operating Systems,73,1,1,Reviewed CPU scheduling algorithms SJF and Round Robin,0
+rec_0564,2026-09-09,2,0,Operating Systems,15,2,1,Deadlock detection and Banker algorithm notes,1
+rec_0565,2026-09-10,3,0,None,0,0,0,Missed study day,0
+rec_0566,2026-09-11,4,0,Web Development,46,1,1,Created fullstack dashboard with Chart.js visualization,0
+rec_0567,2026-09-12,5,1,Operating Systems,55,2,1,Implemented multithreading and mutex semaphore locks,0
+rec_0568,2026-09-13,6,1,Data Structures & Algorithms,77,3,1,Learned heap sort and priority queues,0
+rec_0569,2026-09-14,0,0,Data Structures & Algorithms,62,4,1,Implemented binary search tree and AVL rotations,0
+rec_0570,2026-09-15,1,0,Web Development,50,5,1,Learned DOM manipulation and async await fetch calls,0
+rec_0571,2026-09-16,2,0,Data Structures & Algorithms,21,6,1,Practiced graph BFS DFS traversals on LeetCode,0
+rec_0572,2026-09-17,3,0,Web Development,76,7,1,Learned DOM manipulation and async await fetch calls,1
+rec_0573,2026-09-18,4,0,None,0,0,0,Missed study day,1
+rec_0574,2026-09-19,5,1,None,0,0,0,Missed study day,1
+rec_0575,2026-09-20,6,1,None,0,0,0,Missed study day,0
+rec_0576,2026-09-21,0,0,Data Structures & Algorithms,65,1,1,Learned heap sort and priority queues,0
+rec_0577,2026-09-22,1,0,Web Development,37,2,1,Constructed Express REST API endpoints with authentication,0
+rec_0578,2026-09-23,2,0,Calculus & Mathematics,48,3,1,Limit theorems and Taylor series expansions,0
+rec_0579,2026-09-24,3,0,Data Structures & Algorithms,85,4,1,Learned heap sort and priority queues,0
+rec_0580,2026-09-25,4,0,Operating Systems,62,5,1,Implemented multithreading and mutex semaphore locks,0
+rec_0581,2026-09-26,5,1,Calculus & Mathematics,46,6,1,Differential equations and eigenvalue decomposition,0
+rec_0582,2026-09-27,6,1,Calculus & Mathematics,73,7,1,Limit theorems and Taylor series expansions,0
+rec_0583,2026-09-28,0,0,Web Development,51,8,1,Learned DOM manipulation and async await fetch calls,0
+rec_0584,2026-09-29,1,0,Database Systems,55,9,1,Studied B-tree indexing and query optimizer plans,0
+rec_0585,2026-09-30,2,0,Computer Networks,74,10,1,Congestion control algorithms and socket programming,0
+rec_0586,2026-10-01,3,0,Computer Networks,34,11,1,Subnetting IP address calculation and CIDR notation,0
+rec_0587,2026-10-02,4,0,Calculus & Mathematics,30,12,1,Limit theorems and Taylor series expansions,0
+rec_0588,2026-10-03,5,1,Computer Networks,57,13,1,Subnetting IP address calculation and CIDR notation,0
+rec_0589,2026-10-04,6,1,Computer Networks,58,14,1,OSI model layer protocols and packet encapsulation,0
+rec_0590,2026-10-05,0,0,Database Systems,57,15,1,Database normalization from 1NF to BCNF,0
+rec_0591,2026-10-06,1,0,Calculus & Mathematics,90,16,1,Solved partial derivatives and gradient descent vectors,0
+rec_0592,2026-10-07,2,0,Calculus & Mathematics,35,17,1,Double and triple integrals in polar coordinates,0
+rec_0593,2026-10-08,3,0,Computer Networks,35,18,1,Subnetting IP address calculation and CIDR notation,0
+rec_0594,2026-10-09,4,0,Calculus & Mathematics,57,19,1,Differential equations and eigenvalue decomposition,0
+rec_0595,2026-10-10,5,1,Computer Networks,59,20,1,OSI model layer protocols and packet encapsulation,0
+rec_0596,2026-10-11,6,1,Operating Systems,23,21,1,Implemented multithreading and mutex semaphore locks,0
+rec_0597,2026-10-12,0,0,Web Development,63,22,1,Learned DOM manipulation and async await fetch calls,0
+rec_0598,2026-10-13,1,0,Computer Networks,108,23,1,Subnetting IP address calculation and CIDR notation,0
+rec_0599,2026-10-14,2,0,Database Systems,47,24,1,Studied B-tree indexing and query optimizer plans,0
+rec_0600,2026-10-15,3,0,Calculus & Mathematics,71,25,1,Limit theorems and Taylor series expansions,0
